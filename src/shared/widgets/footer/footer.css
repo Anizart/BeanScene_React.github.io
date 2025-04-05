@@ -1,0 +1,129 @@
+.footer {
+	color: #fff;
+	text-align: left;
+
+	padding: 160px 0 72px;
+	background: url("@assets/footer_bg.webp") center / cover no-repeat;
+	position: relative;
+	.title {
+		color: #fff;
+		font-size: clamp(16px, 2vw, 26px);
+		font-weight: 700;
+		text-align: left;
+	}
+	.row {
+		justify-content: space-between;
+	}
+	.footer__wrapper-img-pngwing-left,
+	.footer__wrapper-img-pngwing-right {
+		position: absolute;
+		top: -236px;
+	}
+	.footer__wrapper-img-pngwing-left {
+		left: -144px;
+	}
+	.footer__wrapper-img-pngwing-right {
+		transform: scale(-1, 1);
+		right: -162px;
+	}
+	.footer__offer {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	.footer__description {
+		font-size: 14px;
+		line-height: 1.5;
+	}
+	.footer__wrapper-img {
+		height: 71px;
+		width: 207px;
+	}
+	.footer__wrapper-icon {
+		display: flex;
+		gap: 20px;
+		margin: auto auto 0 0;
+	}
+	.footer__icon-link {
+		height: 24px;
+		width: auto;
+	}
+	.footer__about,
+	.footer__menu,
+	.footer__company,
+	.footer__contact {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: 20px;
+		line-height: 1.3;
+		margin: 0;
+	}
+	.footer__contact .footer__wrapper-inn {
+		gap: 22px;
+	}
+	.footer__wrapper-inn {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+	.footer__item {
+		width: fit-content;
+	}
+	.footer__link {
+		width: fit-content;
+		transition: 0.5s;
+
+		color: inherit;
+		&::after {
+			content: "";
+			height: 1px;
+			width: 0;
+			display: block;
+			background-color: #fff;
+			transition: 0.5s;
+		}
+		&:hover::after {
+			content: "";
+			width: 100%;
+		}
+	}
+}
+@media (max-width: 991px) {
+	.footer {
+		text-align: center;
+		.row {
+			justify-content: center;
+			row-gap: 50px;
+		}
+		.footer__wrapper-img {
+			margin: 0 auto;
+		}
+		.footer__about,
+		.footer__menu,
+		.footer__company,
+		.footer__contact {
+			width: fit-content;
+		}
+		.footer__wrapper-icon {
+			margin-left: auto;
+		}
+	}
+}
+@media (max-width: 899px) {
+	.footer__wrapper-img-pngwing-left,
+	.footer__wrapper-img-pngwing-right {
+		display: none;
+	}
+}
+@media (max-width: 646px) {
+	.footer {
+		.title {
+			margin: 0 auto;
+		}
+		.footer__item,
+		.footer__link {
+			margin: 0 auto;
+		}
+	}
+}

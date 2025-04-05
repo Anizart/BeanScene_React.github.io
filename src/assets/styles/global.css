@@ -28,12 +28,12 @@ body {
 	transition: 0.5s;
 }
 
-.wrapper {
-	height: fit-content;
+.main {
 	overflow: hidden;
 }
 
-.hidden {
+.wrapper {
+	height: fit-content;
 	overflow: hidden;
 }
 

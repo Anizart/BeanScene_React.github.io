@@ -1,6 +1,6 @@
-import React from "react"
-import "./subscribe.css"
-import bg from "@assets/bg_coffee.webp"
+import React from "react";
+import "./subscribe.css";
+import bg from "@assets/bg_coffee.webp";
 
 const Subscribe = () => {
 	return (
@@ -31,7 +31,7 @@ const Subscribe = () => {
 				</div>
 			</div>
 		</section>
-	)
-}
+	);
+};
 
-export default Subscribe
+export default Subscribe;

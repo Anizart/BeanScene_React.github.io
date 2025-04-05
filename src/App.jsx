@@ -1,23 +1,38 @@
 // import { useState } from "react";
 import "@assets/styles/reset.css";
 import "@assets/styles/global.css";
-import { Welcome } from "./pages/main/sections/index.js";
-import { AboutUs } from "./pages/main/sections/index.js";
-import { Menu } from "./pages/main/sections/index.js";
-import { Priorities } from "./pages/main/sections/index.js";
-import { Subscribe } from "./pages/main/sections/index.js";
+import {
+	Welcome,
+	AboutUs,
+	Menu,
+	Priorities,
+	Chance,
+	Demonstration,
+	Response,
+	Subscribe,
+} from "./pages/main/sections";
+import Header from "./shared/widgets/header/header";
+import Footer from "./shared/widgets/footer/footer";
+import "@assets/styles/global.css";
 
 function App() {
 	// const [count, setCount] = useState(0);
 
 	return (
-		<>
-			<Welcome />
-			<AboutUs />
-			<Menu />
-			<Priorities />
-			<Subscribe />
-		</>
+		<div className="wrapper">
+			<Header />
+			<main className="main">
+				<Welcome />
+				<AboutUs />
+				<Menu />
+				<Priorities />
+				<Chance />
+				<Demonstration />
+				<Response />
+				<Subscribe />
+			</main>
+			<Footer />
+		</div>
 	);
 }
 
