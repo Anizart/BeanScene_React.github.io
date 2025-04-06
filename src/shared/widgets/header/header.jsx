@@ -30,7 +30,7 @@ const Header = () => {
 							<a href="basket.html" className="header__basket">
 								<img
 									src={cart}
-									alt="basket"
+									alt="корзина"
 									className="header__basket"
 								/>
 							</a>
@@ -39,7 +39,7 @@ const Header = () => {
 								className="header__btn-search">
 								<img
 									src={search}
-									alt="search"
+									alt="поиск"
 									className="header__search"
 								/>
 							</button>
@@ -47,13 +47,13 @@ const Header = () => {
 								type="button"
 								className="header__sign-in"
 								data-open-signIn>
-								Sign In
+								Войти
 							</button>
 							<button
 								type="button"
 								className="btn header__sing-up"
 								data-open-signUp>
-								SignUp
+								Регистрация
 							</button>
 						</div>
 					</div>

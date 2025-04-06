@@ -10,22 +10,24 @@ const Subscribe = () => {
 			</div>
 			<div className="container">
 				<div className="subscribe__wrapper">
-					<h2 className="title">Subscribe to get the Latest News</h2>
+					<h2 className="title">
+						Подпишитесь, чтобы получать последние новости
+					</h2>
 					<div className="subscribe__description">
-						Don’t miss out on our latest news, updates, tips and
-						special offers
+						Не пропустите наши новинки, обновления, советы и
+						специальные предложения
 					</div>
 					<form type="post" action="#" className="subscribe__form">
 						<input
 							type="email"
 							name="email"
 							className="subscribe__input"
-							placeholder="Enter your mail"
+							placeholder="Введите электронную почту"
 							tabIndex="6"
 							required
 						/>
 						<button className="subscribe__btn" tabIndex="7">
-							Subscribe
+							Подписаться
 						</button>
 					</form>
 				</div>

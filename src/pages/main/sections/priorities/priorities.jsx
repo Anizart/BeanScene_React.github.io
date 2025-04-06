@@ -18,13 +18,13 @@ const Priorities = () => {
 			</div>
 			<div className="container">
 				<h2 className="title" data-title>
-					Why are we different?
+					Почему мы особенные?
 				</h2>
 				<div className="priorities__description" data-description>
-					We don’t just make your coffee, we make your day!
+					Мы не просто готовим кофе — мы делаем ваш день лучше!
 				</div>
 				<div className="priorities__wrapper">
-					<a href="#" className="priorities__card">
+					<div className="priorities__card">
 						<div className="priorities__wrapper-img">
 							<img
 								src={card1}
@@ -32,14 +32,14 @@ const Priorities = () => {
 								className="priorities__img"
 							/>
 							<h3 className="priorities__priority">
-								Supreme Beans
+								Отборные зёрна
 							</h3>
 							<div className="priorities__text">
-								Beans that provides great taste
+								Зёрна, которые дарят насыщенный вкус
 							</div>
 						</div>
-					</a>
-					<a href="#" className="priorities__card">
+					</div>
+					<div className="priorities__card">
 						<div className="priorities__wrapper-img">
 							<img
 								src={card2}
@@ -47,14 +47,14 @@ const Priorities = () => {
 								className="priorities__img"
 							/>
 							<h3 className="priorities__priority">
-								High Quality
+								Высокое качество
 							</h3>
 							<div className="priorities__text">
-								We provide the highest quality
+								Мы предлагаем только наивысшее качество
 							</div>
 						</div>
-					</a>
-					<a href="#" className="priorities__card">
+					</div>
+					<div className="priorities__card">
 						<div className="priorities__wrapper-img">
 							<img
 								src={card3}
@@ -62,14 +62,14 @@ const Priorities = () => {
 								className="priorities__img"
 							/>
 							<h3 className="priorities__priority">
-								Extraordinary{" "}
+								Неповторимый вкус
 							</h3>
 							<div className="priorities__text">
-								Coffee like you have never tasted
+								Кофе, которого вы ещё не пробовали
 							</div>
 						</div>
-					</a>
-					<a href="#" className="priorities__card">
+					</div>
+					<div className="priorities__card">
 						<div className="priorities__wrapper-img">
 							<img
 								src={card4}
@@ -77,23 +77,23 @@ const Priorities = () => {
 								className="priorities__img"
 							/>
 							<h3 className="priorities__priority">
-								Affordable Price
+								Доступные цены
 							</h3>
 							<div className="priorities__text">
-								Our Coffee prices are easy to afford
+								Наш кофе по приятной цене
 							</div>
 						</div>
-					</a>
+					</div>
 				</div>
 				<div className="priorities__description" data-description>
-					Great ideas start with great coffee, Lets help you achieve
-					that
+					Великие идеи начинаются с отличного кофе — мы поможем вам в
+					этом
 				</div>
 				<div className="subtitle priorities__subtitle">
-					Get started today.
+					Начните уже сегодня.
 				</div>
 				<a href="#" className="btn priorities__btn">
-					Join Us
+					Присоединиться
 				</a>
 			</div>
 		</section>

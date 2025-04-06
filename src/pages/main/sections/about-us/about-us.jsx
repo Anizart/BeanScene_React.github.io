@@ -1,7 +1,7 @@
-import React from "react"
-import "./about-us.css"
-import splashOne from "@assets/spray.webp"
-import cup from "@assets/section_2_cup.png"
+import React from "react";
+import "./about-us.css";
+import splashOne from "@assets/spray.webp";
+import cup from "@assets/section_2_cup.png";
 
 const AboutUs = () => {
 	return (
@@ -17,19 +17,17 @@ const AboutUs = () => {
 				<div className="about-us__wrapper">
 					<div className="about-us__offer">
 						<h2 className="title about-us__title" data-title>
-							Discover the best coffee
+							Откройте для себя лучший кофе
 						</h2>
 						<div className="about-us__description">
-							Bean Scene is a coffee shop that provides you with
-							quality coffee that helps boost your productivity
-							and helps build your mood. Having a cup of coffee is
-							good, but having a cup of real coffee is greater.
-							There is no doubt that you will enjoy this coffee
-							more than others you have ever tasted.
+							Bean Scene — это кофейня, которая предлагает
+							качественный кофе, помогающий повысить
+							продуктивность и поднять настроение. Выпить чашку
+							кофе — это хорошо, но настоящая чашка кофе — это
+							нечто большее. Без сомнений, вы насладитесь этим
+							кофе больше, чем любым другим, который пробовали
+							ранее.
 						</div>
-						<a href="#" className="btn about-us__btn">
-							Learn More
-						</a>
 					</div>
 					<div className="about-us__wrapper-img">
 						<img
@@ -41,7 +39,7 @@ const AboutUs = () => {
 				</div>
 			</div>
 		</section>
-	)
-}
+	);
+};
 
-export default AboutUs
+export default AboutUs;

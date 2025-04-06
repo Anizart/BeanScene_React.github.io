@@ -9,22 +9,22 @@ const Nav = () => {
 						href="#"
 						id="office"
 						className="header__link header__link-accent">
-						Office
+						Офис
 					</a>
 				</li>
 				<li className="header__item">
 					<a href="#home" className="header__link">
-						Home
+						Главная
 					</a>
 				</li>
 				<li className="header__item">
 					<a href="#about-us" className="header__link">
-						About Us
+						О нас
 					</a>
 				</li>
 				<li className="header__item">
 					<a href="#contact" className="header__link">
-						Contact Us
+						Контакты
 					</a>
 				</li>
 			</ul>

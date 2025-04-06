@@ -3,14 +3,14 @@ import "./menu.css";
 
 const Menu = () => {
 	return (
-		<section className="section menu">
+		<section className="section menu" id="menu">
 			<div className="container">
 				<h2 className="title" data-title>
-					Enjoy a new blend of coffee style
+					Откройте для себя новый стиль кофе
 				</h2>
 				<div className="menu__description">
-					Explore all flavours of coffee with us. There is always a
-					new cup worth experiencing
+					Исследуйте все вкусы кофе вместе с нами. Всегда найдётся
+					новая чашка, которую стоит попробовать.
 				</div>
 				<div className="menu__wrapper owl-carousel menu__owl-carousel">
 					<div className="menu__card">
@@ -21,16 +21,16 @@ const Menu = () => {
 								className="menu__img"
 							/>
 						</div>
-						<h3 className="menu__name">Cappuccino</h3>
+						<h3 className="menu__name">Капучино</h3>
 						<div className="menu__weights">
-							Coffee 50% | Milk 50%
+							Кофе 50% | Молоко 50%
 						</div>
 						<div className="menu__price">18.50</div>
 						<a
 							href="#"
 							className="btn menu__btn"
 							data-productId="1">
-							Order now
+							Заказать
 						</a>
 					</div>
 					<div className="menu__card">
@@ -41,16 +41,16 @@ const Menu = () => {
 								className="menu__img"
 							/>
 						</div>
-						<h3 className="menu__name">Chai Latte</h3>
+						<h3 className="menu__name">Чай Латте</h3>
 						<div className="menu__weights">
-							Coffee 50% | Milk 50%
+							Кофе 50% | Молоко 50%
 						</div>
 						<div className="menu__price">28.50</div>
 						<a
 							href="#"
 							className="btn menu__btn"
 							data-productId="2">
-							Order now
+							Заказать
 						</a>
 					</div>
 					<div className="menu__card">
@@ -63,14 +63,14 @@ const Menu = () => {
 						</div>
 						<h3 className="menu__name">Macchiato</h3>
 						<div className="menu__weights">
-							Coffee 50% | Milk 50%
+							Кофе 50% | Молоко 50%
 						</div>
 						<div className="menu__price">38.50</div>
 						<a
 							href="#"
 							className="btn menu__btn"
 							data-productId="3">
-							Order now
+							Заказать
 						</a>
 					</div>
 					<div className="menu__card">
@@ -83,14 +83,14 @@ const Menu = () => {
 						</div>
 						<h3 className="menu__name">Expresso</h3>
 						<div className="menu__weights">
-							Coffee 50% | Milk 50%
+							Кофе 50% | Молоко 50%
 						</div>
 						<div className="menu__price">48.50</div>
 						<a
 							href="#"
 							className="btn menu__btn"
 							data-productId="4">
-							Order now
+							Заказать
 						</a>
 					</div>
 				</div>

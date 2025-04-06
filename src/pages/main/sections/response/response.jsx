@@ -22,10 +22,10 @@ const Response = () => {
 			</div>
 			<div className="container">
 				<h2 className="title" data-title>
-					Our coffee perfection feedback
+					Что говорят о нас любители кофе
 				</h2>
 				<div className="response__description">
-					Our customers have amazing things to say about us
+					Нам доверяют тысячи довольных клиентов
 				</div>
 				<div className="response__wrapper-sw">
 					<MenuSlider />

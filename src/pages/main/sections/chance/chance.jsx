@@ -17,15 +17,15 @@ const Chance = () => {
 				<div class="chance__wrapper">
 					<div class="chance__offer col-md-5 col-lg-6">
 						<h2 class="title chance__title title-light">
-							Get a chance to have an Amazing morning
+							Получите шанс начать утро великолепно
 						</h2>
 						<div class="chance__description">
-							We are giving you are one time opportunity to
+							Мы дарим вам уникальную возможность
 							<br />
-							experience a better life with coffee.
+							почувствовать вкус жизни вместе с кофе.
 						</div>
-						<a href="#" class="btn chance__btn">
-							Order Now
+						<a href="#menu" class="btn chance__btn">
+							Заказать сейчас
 						</a>
 					</div>
 					<div class="chance__wrapper-img">

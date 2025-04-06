@@ -5,24 +5,24 @@ const Office = () => {
 	return (
 		<section class="office">
 			<div class="container">
-				<h1 class="title office__title">Personal Cabinet</h1>
+				<h1 class="title office__title">Личный кабинет</h1>
 				<div class="office__profile-info">
 					<p>
-						<strong>Username:</strong> Error
+						<strong>Ваше Имя:</strong> Error
 					</p>
 					<p>
-						<strong>Email:</strong> Error
+						<strong>Электронная почта:</strong> Error
 					</p>
 					<p>
-						<strong>Address:</strong> Error
+						<strong>Адрес:</strong> Error
 					</p>
 				</div>
 				<div class="office__wrapper-btn">
 					<button type="button" class="btn btn-edit">
-						Edit Profile
+						Редактировать профиль
 					</button>
 					<button type="button" class="btn btn-exit">
-						Exit
+						Выйти
 					</button>
 				</div>
 			</div>

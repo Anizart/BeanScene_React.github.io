@@ -22,14 +22,15 @@ const MenuSlider = () => {
 					<div className="response__wrapper col-10">
 						<div className="response__quotation-marks">“</div>
 						<div className="response__comment">
-							Lorem Ipsum is simply dummy text of the printing and
-							typesetting industry...
+							Кофе здесь — это настоящее искусство! Каждый глоток
+							— как вдохновение для работы. Рекомендую всем, кто
+							ценит настоящий вкус и высокое качество.
 						</div>
 						<div className="subtitle response__subtitle">
-							Jonny Thomas
+							Джонни Томас
 						</div>
 						<div className="response__profession">
-							Project Manager
+							Руководитель проекта
 						</div>
 						<div className="response__wrapper-img">
 							<img

@@ -31,11 +31,10 @@ const Footer = () => {
 							<img src={logo} alt="logo" class="footer__img" />
 						</a>
 						<div class="footer__description">
-							Lorem Ipsum is simply dummy text of the printing and
-							typesetting industry. Lorem Ipsum has been the
-							industry's standard dummy text ever since the 1500s,
-							when an unknown printer took a galley of type and
-							scrambled it to make a type specimen book.
+							Мы создаем уникальные моменты для настоящих
+							ценителей кофе. Присоединяйтесь к нам, чтобы
+							наслаждаться качественным кофе, который подарит вам
+							вдохновение и энергию на весь день.
 						</div>
 						<div class="footer__wrapper-icon">
 							<a href="#" class="footer__link-icon">
@@ -69,43 +68,43 @@ const Footer = () => {
 						</div>
 					</div>
 					<div class="footer__about col-lg-2">
-						<h2 class="title">About</h2>
+						<h2 class="title">О нас</h2>
 						<nav class="footer__nav">
 							<ul class="footer__menu">
 								<li class="footer__item">
 									<a href="#" class="footer__link">
-										Menu
+										Меню
 									</a>
 								</li>
 								<li class="footer__item">
 									<a href="#" class="footer__link">
-										Features
+										Особенности
 									</a>
 								</li>
 								<li class="footer__item">
 									<a href="#" class="footer__link">
-										News & Blogs
+										Новости и блоги
 									</a>
 								</li>
 								<li class="footer__item">
 									<a href="#" class="footer__link">
-										Help & Supports
+										Помощь и поддержка
 									</a>
 								</li>
 							</ul>
 						</nav>
 					</div>
 					<div class="footer__company col-lg-2">
-						<h2 class="title">Company</h2>
+						<h2 class="title">Компания</h2>
 						<div class="footer__wrapper-inn">
 							<a href="#" class="footer__link">
-								How we work
+								Как мы работаем
 							</a>
 							<a href="#" class="footer__link">
-								Terms of service
+								Условия обслуживания
 							</a>
 							<a href="#" class="footer__link">
-								Pricing
+								Цены
 							</a>
 							<a href="#" class="footer__link">
 								FAQ
@@ -113,17 +112,16 @@ const Footer = () => {
 						</div>
 					</div>
 					<div class="footer__contact col-lg-4">
-						<h2 class="title">Contact Us</h2>
+						<h2 class="title">Контакты</h2>
 						<div class="footer__wrapper-inn">
 							<a href="#" class="footer__link">
-								Akshya Nagar 1st Block 1st Cross, Rammurthy
-								nagar, Bangalore-560016
+								Москва, ул. Тверская, д. 7, офис 15
 							</a>
 							<a href="tel:+12029182132" class="footer__link">
-								+1 202-918-2132
+								+7 800-123-45-67
 							</a>
 							<a href="#" class="footer__link">
-								beanscene@mail.com
+								beanscene@gmail.com
 							</a>
 							<a href="#" class="footer__link">
 								www.beanscene.com

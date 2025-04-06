@@ -6,12 +6,12 @@ const Cart = () => {
 	return (
 		<section class="basket">
 			<div class="container">
-				<h1 class="title title-shopping">Shopping cart</h1>
+				<h1 class="title title-shopping">Корзина покупок</h1>
 				<div class="basket__null">
-					<div class="basket__text">Your shopping cart is empty</div>
+					<div class="basket__text">Ваша корзина пуста</div>
 					<img src={cart} alt="basket" class="basket__img" />
 					<a href="index.html" class="btn btn-order">
-						Order everything!
+						Заказать всё!
 					</a>
 				</div>
 			</div>
