@@ -3,19 +3,19 @@ import "./search.css";
 
 const ModalSearch = () => {
 	return (
-		<div class="modal modal-search" data-modal-search>
-			<form action="#" method="post" class="modal__wrapper">
-				<div class="modal__text">Что вы хотите сегодня?</div>
+		<div className="modal modal-search">
+			<form action="#" method="post" className="modal__wrapper">
+				<div className="modal__text">Что вы хотите сегодня?</div>
 				<input
 					type="text"
 					name="email-signIn"
 					id="search"
-					class="modal__input"
+					className="modal__input"
 					placeholder="Название продукта..."
-					tabindex="1"
+					tabIndex="1"
 					required
 				/>
-				<div class="modal-search__wrapper-products"></div>
+				<div className="modal-search__wrapper-products"></div>
 			</form>
 		</div>
 	);

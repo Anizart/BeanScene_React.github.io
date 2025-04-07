@@ -54,7 +54,9 @@
 	}
 }
 @media (max-width: 767px) {
-	.welcome__offer {
-		max-width: 300px;
+	.welcome {
+		.welcome__offer {
+			max-width: 300px;
+		}
 	}
 }

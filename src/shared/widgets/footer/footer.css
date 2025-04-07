@@ -111,9 +111,11 @@
 	}
 }
 @media (max-width: 899px) {
-	.footer__wrapper-img-pngwing-left,
-	.footer__wrapper-img-pngwing-right {
-		display: none;
+	.footer {
+		.footer__wrapper-img-pngwing-left,
+		.footer__wrapper-img-pngwing-right {
+			display: none;
+		}
 	}
 }
 @media (max-width: 646px) {

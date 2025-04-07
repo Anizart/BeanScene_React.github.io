@@ -1,5 +1,5 @@
 .bg-blure {
-	background: rgba(#573208, 40%);
+	background: rgba(87, 50, 8, 0.4);
 	backdrop-filter: blur(4px);
 	transition:
 		background 0.8s,
@@ -126,6 +126,20 @@
 		}
 	}
 }
+.active-burger {
+	transition: 0.5s;
+	left: 0 !important;
+}
+
+.circle-transform {
+	background: var(--light-color) !important;
+	transform: translateX(22px);
+	transition: 0.5s;
+}
+.toggle-container-bg {
+	transition: 0.5s;
+	background: #000 !important;
+}
 @media (max-width: 899px) {
 	.header {
 		.header__burger {
@@ -202,8 +216,10 @@
 	}
 }
 @media (max-width: 425px) {
-	.header__wrapper-nav {
-		width: 100%;
-		align-items: center;
+	.header {
+		.header__wrapper-nav {
+			width: 100%;
+			align-items: center;
+		}
 	}
 }

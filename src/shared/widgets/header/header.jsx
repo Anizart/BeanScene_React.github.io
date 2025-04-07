@@ -1,11 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./header.css";
 import Nav from "./header-nav/header-nav";
 import logo from "@assets/svg/logo.svg";
 import cart from "@assets/svg/basket.svg";
 import search from "@assets/svg/header_search.svg";
 
-const Header = () => {
+const Header = ({
+	onToggleBurger,
+	isBurgerOpen,
+	onToggleMode,
+	mode,
+	onOpenModalSignUp,
+}) => {
+	useEffect(() => {
+		const header = document.querySelector(".header");
+		if (!header) return;
+
+		const handleScroll = () => {
+			const scrollTop = document.documentElement.scrollTop;
+			if (scrollTop >= 10) {
+				header.classList.add("bg-blure");
+			} else {
+				header.classList.remove("bg-blure");
+			}
+		};
+
+		window.addEventListener("scroll", handleScroll);
+
+		// Очистка при размонтировании
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+
 	return (
 		<header className="header">
 			<div className="container">
@@ -19,13 +46,16 @@ const Header = () => {
 							/>
 						</a>
 					</div>
-					<div className="header__wrapper-nav">
+					<div
+						className={`header__wrapper-nav ${isBurgerOpen ? "active-burger" : ""}`}>
 						<Nav />
 						<div className="header__wrapper-elem">
 							<div
-								className="header__toggle-container"
-								id="toggle-dark-mode">
-								<div className="header__circle"></div>
+								className={`header__toggle-container ${mode ? "toggle-container-bg" : ""}`}
+								id="toggle-dark-mode"
+								onClick={onToggleMode}>
+								<div
+									className={`header__circle ${mode ? "circle-transform" : ""}`}></div>
 							</div>
 							<a href="basket.html" className="header__basket">
 								<img
@@ -52,12 +82,14 @@ const Header = () => {
 							<button
 								type="button"
 								className="btn header__sing-up"
-								data-open-signUp>
+								onClick={onOpenModalSignUp}>
 								Регистрация
 							</button>
 						</div>
 					</div>
-					<span className="header__burger"></span>
+					<span
+						onClick={onToggleBurger}
+						className="header__burger"></span>
 				</div>
 			</div>
 		</header>

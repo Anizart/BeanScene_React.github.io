@@ -67,20 +67,24 @@
 	}
 }
 @media (max-width: 769px) {
-	.menu__card {
-		min-height: clamp(210px, 33vw, 250px);
-		width: clamp(130px, 30vw, 230px);
-	}
-	.menu__wrapper-img {
-		height: clamp(100px, 19vw, 140px);
+	.menu {
+		.menu__card {
+			min-height: clamp(210px, 33vw, 250px);
+			width: clamp(130px, 30vw, 230px);
+		}
+		.menu__wrapper-img {
+			height: clamp(100px, 19vw, 140px);
+		}
 	}
 }
 @media (max-width: 459px) {
-	.menu__card {
-		min-height: clamp(210px, 33vw, 300px);
-		width: clamp(140px, 45vw, 200px);
-	}
-	.menu__wrapper-img {
-		height: clamp(100px, 33vw, 140px);
+	.menu {
+		.menu__card {
+			min-height: clamp(210px, 33vw, 300px);
+			width: clamp(140px, 45vw, 200px);
+		}
+		.menu__wrapper-img {
+			height: clamp(100px, 33vw, 140px);
+		}
 	}
 }

@@ -67,12 +67,14 @@
 	}
 }
 @media (max-width: 720px) {
-	.subscribe__input {
-		width: 100%;
-		padding-right: 100px;
-	}
-	.subscribe__btn {
-		font-size: 18px;
-		padding: 0px 8px;
+	.subscribe {
+		.subscribe__input {
+			width: 100%;
+			padding-right: 100px;
+		}
+		.subscribe__btn {
+			font-size: 18px;
+			padding: 0px 8px;
+		}
 	}
 }
