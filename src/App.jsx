@@ -1,92 +1,77 @@
-import "@assets/styles/reset.css";
-import "@assets/styles/global.css";
-import {
-	Welcome,
-	AboutUs,
-	Menu,
-	Priorities,
-	Chance,
-	Demonstration,
-	Response,
-	Subscribe,
-} from "./pages/main/sections";
 import Header from "./shared/widgets/header/header";
+import IndexPage from "./pages/main/sections";
+import Office from "./pages/office/sections/office/office";
+import Cart from "./pages/cart/sections/cart/cart";
+import NotfoundPage from "./pages/notfound-page-404/notfound-page";
 import Footer from "./shared/widgets/footer/footer";
 import ModalSearch from "./shared/ui/modals/search/search";
 import ModalSignIn from "./shared/ui/modals/signin/signin";
 import ModalSignUp from "./shared/ui/modals/signup/signup";
 import ModalMessage from "./shared/ui/modals/message/message";
-import "@assets/styles/global.css";
-import { Component } from "react";
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router";
 
-export default class App extends Component {
-	// const [count, setCount] = useState(0);
+const App = () => {
+	//+ header:
+	const [mode, onToggleMode] = useState(
+		JSON.parse(localStorage.getItem("mode") ?? "false"),
+	);
 
-	state = {
-		isBurgerOpen: false,
-		mode: false,
-		isModalSignUp: false,
-	};
+	const [isBurgerOpen, onToggleBurger] = useState(false);
 
-	//+ burger:
-	onToggleBurger = () => {
-		this.setState(
-			(prevState) => ({
-				isBurgerOpen: !prevState.isBurgerOpen,
-			}),
-			() => {
-				this.hiddenElem();
-			},
-		);
-	};
+	const [isSignUpOpen, setIsSignUpOpen] = useState(false);
+	const [isSignInOpen, setIsSignInOpen] = useState(false);
 
-	onToggleMode = () => {
-		this.setState(({ mode }) => ({
-			mode: !mode,
-		}));
-	};
+	useEffect(() => {
+		document.body.classList.toggle("hidden", isSignUpOpen || isSignInOpen);
+	}, [isSignUpOpen, isSignInOpen]);
 
-	onOpenModalSignUp = () => {
-		this.setState(
-			(prevState) => ({
-				isModalSignUp: !prevState.isModalSignUp,
-			}),
-			() => {
-				this.hiddenElem();
-			},
-		);
-	};
+	useEffect(() => {
+		localStorage.setItem("mode", JSON.stringify(mode));
+		document.body.classList.toggle("dark", mode);
+	}, [mode]);
 
-	hiddenElem() {
-		document.body.classList.toggle("hidden");
-	}
+	return (
+		<div className="wrapper">
+			<Header
+				isBurgerOpen={isBurgerOpen}
+				mode={mode}
+				isSignUpOpen={isSignUpOpen}
+				isSignInOpen={isSignInOpen}
+				onToggleBurger={onToggleBurger}
+				onToggleMode={onToggleMode}
+				setIsSignUpOpen={setIsSignUpOpen}
+				setIsSignInOpen={setIsSignInOpen}
+			/>
+			<main className="main">
+				<Routes>
+					<Route path="/" element={<IndexPage />} />
+					<Route path="/office" element={<Office />} />
+					<Route path="/cart" element={<Cart />} />
+					<Route path="*" element={<NotfoundPage />} />
+				</Routes>
+			</main>
+			<Footer />
+			<ModalSearch />
+			<ModalSignIn
+				isSignInOpen={isSignInOpen}
+				setIsSignInOpen={setIsSignInOpen}
+				onSwitchToSignIn={() => {
+					setIsSignInOpen(false);
+					setIsSignUpOpen(true);
+				}}
+			/>
+			<ModalSignUp
+				setIsSignUpOpen={setIsSignUpOpen}
+				isSignUpOpen={isSignUpOpen}
+				onSwitchToSignIn={() => {
+					setIsSignUpOpen(false); // Я бы написал через !, но gpt написал лучше явно закрывать, а так я понимаю это то же самое setIsSignUpOpen(!isSignUpOpen)
+					setIsSignInOpen(true);
+				}}
+			/>
+			<ModalMessage />
+		</div>
+	);
+};
 
-	render() {
-		return (
-			<div className="wrapper">
-				<Header
-					onToggleBurger={this.onToggleBurger}
-					isBurgerOpen={this.state.isBurgerOpen}
-					onToggleMode={this.onToggleMode}
-					mode={this.state.mode}
-					onOpenModalSignUp={this.onOpenModalSignUp}
-				/>
-				<main className="main">
-					<Welcome />
-					<AboutUs />
-					<Menu />
-					<Priorities />
-					<Chance />
-					<Demonstration />
-					<Response />
-					<Subscribe />
-				</main>
-				<Footer />
-				<ModalSearch />
-				<ModalSignIn />
-				<ModalSignUp isModalSignUp={this.state.isModalSignUp} />
-				<ModalMessage />
-			</div>
-		);
-	}
-}
+export default App;

@@ -1,21 +1,22 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Nav = () => {
 	return (
 		<nav className="header__nav">
 			<ul className="header__menu">
 				<li className="header__item">
-					<a
-						href="#"
+					<Link
+						to="/office"
 						id="office"
 						className="header__link header__link-accent">
 						Офис
-					</a>
+					</Link>
 				</li>
 				<li className="header__item">
-					<a href="#home" className="header__link">
+					<Link to="/" className="header__link">
 						Главная
-					</a>
+					</Link>
 				</li>
 				<li className="header__item">
 					<a href="#about-us" className="header__link">

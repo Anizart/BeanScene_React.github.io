@@ -5,9 +5,7 @@ const Menu = () => {
 	return (
 		<section className="section menu" id="menu">
 			<div className="container">
-				<h2 className="title" data-title>
-					Откройте для себя новый стиль кофе
-				</h2>
+				<h2 className="title">Откройте для себя новый стиль кофе</h2>
 				<div className="menu__description">
 					Исследуйте все вкусы кофе вместе с нами. Всегда найдётся
 					новая чашка, которую стоит попробовать.
@@ -26,10 +24,7 @@ const Menu = () => {
 							Кофе 50% | Молоко 50%
 						</div>
 						<div className="menu__price">18.50</div>
-						<a
-							href="#"
-							className="btn menu__btn"
-							data-productId="1">
+						<a href="#" className="btn menu__btn">
 							Заказать
 						</a>
 					</div>
@@ -46,10 +41,7 @@ const Menu = () => {
 							Кофе 50% | Молоко 50%
 						</div>
 						<div className="menu__price">28.50</div>
-						<a
-							href="#"
-							className="btn menu__btn"
-							data-productId="2">
+						<a href="#" className="btn menu__btn">
 							Заказать
 						</a>
 					</div>
@@ -66,10 +58,7 @@ const Menu = () => {
 							Кофе 50% | Молоко 50%
 						</div>
 						<div className="menu__price">38.50</div>
-						<a
-							href="#"
-							className="btn menu__btn"
-							data-productId="3">
+						<a href="#" className="btn menu__btn">
 							Заказать
 						</a>
 					</div>
@@ -86,10 +75,7 @@ const Menu = () => {
 							Кофе 50% | Молоко 50%
 						</div>
 						<div className="menu__price">48.50</div>
-						<a
-							href="#"
-							className="btn menu__btn"
-							data-productId="4">
+						<a href="#" className="btn menu__btn">
 							Заказать
 						</a>
 					</div>

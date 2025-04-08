@@ -1,3 +1,5 @@
+@import "./reset.css";
+
 :root {
 	--primary-font: "Playfair Display", serif, Arial, Helvetica;
 	--contrast-font: "Clicker Script", serif, Arial, Helvetica;
@@ -19,13 +21,38 @@
 	--frequent-font-size: clamp(12px, 1.5vw, 20px);
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	height: fit-content;
 	font-family: var(--primary-font) !important;
 	color: var(--light-theme-title);
 	font-size: var(--frequent-font-size);
 	text-align: center;
-	transition: 0.5s;
+	transition:
+		color,
+		background 0.5s;
+	&.dark {
+		background: var(--dark-theme-bg);
+		color: var(--dark-theme-text);
+		.title,
+		.subtitle,
+		.response__quotation-marks {
+			color: var(--dark-theme-title);
+		}
+		.priorities__description {
+			color: var(--dark-theme-text);
+		}
+		.response__wrapper {
+			background: var(--dark-background-elements-bg);
+			transition: 0.5s;
+		}
+		.ignore-dark-theme {
+			color: inherit;
+		}
+	}
 }
 
 .hidden {
@@ -117,7 +144,7 @@ img {
 	padding: 0 26px;
 
 	color: #1e1e1e;
-	font-size: clamp(12px, 1.5vw, 16px);
+	font-size: clamp(12px, 1.2vw, 16px);
 	font-weight: 700;
 	text-transform: capitalize;
 	white-space: nowrap;
@@ -136,6 +163,11 @@ img {
 	transition: 0.5s;
 	align-items: center;
 	z-index: 2000;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
 	.modal__wrapper {
 		height: fit-content;
 		max-height: 85vh;
@@ -186,6 +218,8 @@ img {
 		min-height: 48px;
 	}
 	.modal__link {
+		background: none;
+		color: inherit;
 		cursor: pointer;
 	}
 	.modal__link::after {

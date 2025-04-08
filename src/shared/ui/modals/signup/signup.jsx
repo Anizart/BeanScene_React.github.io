@@ -1,18 +1,23 @@
 import React from "react";
 import "./signup.css";
 
-const ModalSignUp = ({ isModalSignUp }) => {
+const ModalSignUp = ({ isSignUpOpen, setIsSignUpOpen, onSwitchToSignIn }) => {
 	return (
 		<div
-			className={`modal ${isModalSignUp ? "modal-area-active" : ""}`}
+			className={`modal ${isSignUpOpen ? "modal-area-active" : ""}`}
+			onClick={() => setIsSignUpOpen(!isSignUpOpen)}
 			tabIndex="-1">
-			<form action="#" method="post" className="modal__wrapper">
+			<form
+				action="#"
+				method="post"
+				onClick={(e) => e.stopPropagation()}
+				className="modal__wrapper">
 				<div className="modal__text">
 					Добро пожаловать! Ваше кофейное приключение начинается
 					здесь.
 				</div>
 				<div className="modal__wrapper-input">
-					<label for="name" className="modal__label">
+					<label htmlFor="name" className="modal__label">
 						Ваше Имя
 					</label>
 					<input
@@ -25,7 +30,7 @@ const ModalSignUp = ({ isModalSignUp }) => {
 					/>
 				</div>
 				<div className="modal__wrapper-input">
-					<label for="email" className="modal__label">
+					<label htmlFor="email" className="modal__label">
 						Электронная почта
 					</label>
 					<input
@@ -38,7 +43,7 @@ const ModalSignUp = ({ isModalSignUp }) => {
 					/>
 				</div>
 				<div className="modal__wrapper-input">
-					<label for="address" className="modal__label">
+					<label htmlFor="address" className="modal__label">
 						Адрес
 					</label>
 					<input
@@ -60,7 +65,7 @@ const ModalSignUp = ({ isModalSignUp }) => {
 					</datalist>
 				</div>
 				<div className="modal__wrapper-input">
-					<label for="password" className="modal__label">
+					<label htmlFor="password" className="modal__label">
 						Пароль
 					</label>
 					<input
@@ -72,16 +77,15 @@ const ModalSignUp = ({ isModalSignUp }) => {
 						required
 					/>
 				</div>
-				<button
-					type="submit"
-					className="btn modal__btn"
-					tabIndex="5"
-					data-btn-signUp>
+				<button type="submit" className="btn modal__btn" tabIndex="5">
 					Отправить
 				</button>
-				<div className="modal__link" data-linkRegistration>
+				<button
+					type="button"
+					onClick={onSwitchToSignIn}
+					className="modal__link">
 					Уже есть аккаунт?
-				</div>
+				</button>
 			</form>
 		</div>
 	);

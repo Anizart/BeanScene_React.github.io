@@ -7,13 +7,19 @@ import Demonstration from "./demonstration/demonstration";
 import Response from "./response/response";
 import Subscribe from "./subscribe/subscribe";
 
-export {
-	Welcome,
-	AboutUs,
-	Menu,
-	Priorities,
-	Chance,
-	Demonstration,
-	Response,
-	Subscribe,
+const IndexPage = () => {
+	return (
+		<>
+			<Welcome />
+			<AboutUs />
+			<Menu />
+			<Priorities />
+			<Chance />
+			<Demonstration />
+			<Response />
+			<Subscribe />
+		</>
+	);
 };
+
+export default IndexPage;

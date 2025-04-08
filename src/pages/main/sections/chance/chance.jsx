@@ -6,33 +6,33 @@ import cup from "@assets/section_5_cup.webp";
 
 const Chance = () => {
 	return (
-		<section class="section chance">
-			<div class="chance__wrapper-img-bg">
-				<img src={bg} alt="background" class="chance__img-bg" />
+		<section className="section chance">
+			<div className="chance__wrapper-img-bg">
+				<img src={bg} alt="background" className="chance__img-bg" />
 			</div>
-			<div class="chance__wrapper-img-grains">
-				<img src={grains} alt="grains" class="chance__img-grains" />
+			<div className="chance__wrapper-img-grains">
+				<img src={grains} alt="grains" className="chance__img-grains" />
 			</div>
-			<div class="container">
-				<div class="chance__wrapper">
-					<div class="chance__offer col-md-5 col-lg-6">
-						<h2 class="title chance__title title-light">
+			<div className="container">
+				<div className="chance__wrapper">
+					<div className="chance__offer col-md-5 col-lg-6">
+						<h2 className="title chance__title title-light ignore-dark-theme">
 							Получите шанс начать утро великолепно
 						</h2>
-						<div class="chance__description">
+						<div className="chance__description">
 							Мы дарим вам уникальную возможность
 							<br />
 							почувствовать вкус жизни вместе с кофе.
 						</div>
-						<a href="#menu" class="btn chance__btn">
+						<a href="#menu" className="btn chance__btn">
 							Заказать сейчас
 						</a>
 					</div>
-					<div class="chance__wrapper-img">
+					<div className="chance__wrapper-img">
 						<img
 							src={cup}
 							alt="a cup of coffee"
-							class="chance__img"
+							className="chance__img"
 						/>
 					</div>
 				</div>

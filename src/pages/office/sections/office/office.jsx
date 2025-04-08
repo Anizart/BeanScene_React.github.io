@@ -3,10 +3,10 @@ import "./office.css";
 
 const Office = () => {
 	return (
-		<section class="office">
-			<div class="container">
-				<h1 class="title office__title">Личный кабинет</h1>
-				<div class="office__profile-info">
+		<section className="office">
+			<div className="container">
+				<h1 className="title office__title">Личный кабинет</h1>
+				<div className="office__profile-info">
 					<p>
 						<strong>Ваше Имя:</strong> Error
 					</p>
@@ -17,11 +17,11 @@ const Office = () => {
 						<strong>Адрес:</strong> Error
 					</p>
 				</div>
-				<div class="office__wrapper-btn">
-					<button type="button" class="btn btn-edit">
+				<div className="office__wrapper-btn">
+					<button type="button" className="btn btn-edit">
 						Редактировать профиль
 					</button>
-					<button type="button" class="btn btn-exit">
+					<button type="button" className="btn btn-exit">
 						Выйти
 					</button>
 				</div>

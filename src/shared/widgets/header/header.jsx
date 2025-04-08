@@ -4,13 +4,17 @@ import Nav from "./header-nav/header-nav";
 import logo from "@assets/svg/logo.svg";
 import cart from "@assets/svg/basket.svg";
 import search from "@assets/svg/header_search.svg";
+import { Link } from "react-router";
 
 const Header = ({
-	onToggleBurger,
 	isBurgerOpen,
-	onToggleMode,
 	mode,
-	onOpenModalSignUp,
+	isSignUpOpen,
+	isSignInOpen,
+	onToggleBurger,
+	onToggleMode,
+	setIsSignUpOpen,
+	setIsSignInOpen,
 }) => {
 	useEffect(() => {
 		const header = document.querySelector(".header");
@@ -38,13 +42,13 @@ const Header = ({
 			<div className="container">
 				<div className="header__wrapper d-flex">
 					<div className="header__wrapper-img">
-						<a href="index.html" className="header__link-logo">
+						<Link to="/" className="header__link-logo">
 							<img
 								src={logo}
 								alt="logo"
 								className="header__img"
 							/>
-						</a>
+						</Link>
 					</div>
 					<div
 						className={`header__wrapper-nav ${isBurgerOpen ? "active-burger" : ""}`}>
@@ -53,17 +57,17 @@ const Header = ({
 							<div
 								className={`header__toggle-container ${mode ? "toggle-container-bg" : ""}`}
 								id="toggle-dark-mode"
-								onClick={onToggleMode}>
+								onClick={() => onToggleMode(!mode)}>
 								<div
 									className={`header__circle ${mode ? "circle-transform" : ""}`}></div>
 							</div>
-							<a href="basket.html" className="header__basket">
+							<Link to="/cart" className="header__basket">
 								<img
 									src={cart}
 									alt="корзина"
 									className="header__basket"
 								/>
-							</a>
+							</Link>
 							<button
 								type="button"
 								className="header__btn-search">
@@ -76,19 +80,19 @@ const Header = ({
 							<button
 								type="button"
 								className="header__sign-in"
-								data-open-signIn>
+								onClick={() => setIsSignInOpen(!isSignInOpen)}>
 								Войти
 							</button>
 							<button
 								type="button"
 								className="btn header__sing-up"
-								onClick={onOpenModalSignUp}>
+								onClick={() => setIsSignUpOpen(!isSignUpOpen)}>
 								Регистрация
 							</button>
 						</div>
 					</div>
 					<span
-						onClick={onToggleBurger}
+						onClick={() => onToggleBurger(!isBurgerOpen)}
 						className="header__burger"></span>
 				</div>
 			</div>

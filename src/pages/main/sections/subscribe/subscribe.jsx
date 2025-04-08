@@ -10,7 +10,7 @@ const Subscribe = () => {
 			</div>
 			<div className="container">
 				<div className="subscribe__wrapper">
-					<h2 className="title">
+					<h2 className="title ignore-dark-theme">
 						Подпишитесь, чтобы получать последние новости
 					</h2>
 					<div className="subscribe__description">
