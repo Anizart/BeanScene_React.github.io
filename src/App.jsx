@@ -21,6 +21,7 @@ const App = () => {
 
 	const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 	const [isSignInOpen, setIsSignInOpen] = useState(false);
+	const [isSearchOpen, setIsSearchOpen] = useState(false);
 
 	useEffect(() => {
 		document.body.classList.toggle("hidden", isSignUpOpen || isSignInOpen);
@@ -31,6 +32,10 @@ const App = () => {
 		document.body.classList.toggle("dark", mode);
 	}, [mode]);
 
+	useEffect(() => {
+		document.body.classList.toggle("hidden", isSearchOpen);
+	}, [isSearchOpen]);
+
 	return (
 		<div className="wrapper">
 			<Header
@@ -38,10 +43,12 @@ const App = () => {
 				mode={mode}
 				isSignUpOpen={isSignUpOpen}
 				isSignInOpen={isSignInOpen}
+				isSearchOpen={isSearchOpen}
 				onToggleBurger={onToggleBurger}
 				onToggleMode={onToggleMode}
 				setIsSignUpOpen={setIsSignUpOpen}
 				setIsSignInOpen={setIsSignInOpen}
+				setIsSearchOpen={setIsSearchOpen}
 			/>
 			<main className="main">
 				<Routes>
@@ -52,7 +59,10 @@ const App = () => {
 				</Routes>
 			</main>
 			<Footer />
-			<ModalSearch />
+			<ModalSearch
+				isSearchOpen={isSearchOpen}
+				setIsSearchOpen={setIsSearchOpen}
+			/>
 			<ModalSignIn
 				isSignInOpen={isSignInOpen}
 				setIsSignInOpen={setIsSignInOpen}

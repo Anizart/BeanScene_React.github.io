@@ -1,10 +1,16 @@
 import React from "react";
 import "./search.css";
 
-const ModalSearch = () => {
+const ModalSearch = ({ isSearchOpen, setIsSearchOpen }) => {
 	return (
-		<div className="modal modal-search">
-			<form action="#" method="post" className="modal__wrapper">
+		<div
+			className={`modal modal-search ${isSearchOpen ? "modal-area-active" : ""}`}
+			onClick={() => setIsSearchOpen(!isSearchOpen)}>
+			<form
+				action="#"
+				method="post"
+				className="modal__wrapper"
+				onClick={(e) => e.stopPropagation()}>
 				<div className="modal__text">Что вы хотите сегодня?</div>
 				<input
 					type="text"

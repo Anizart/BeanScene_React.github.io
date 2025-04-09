@@ -7,13 +7,13 @@ const Office = () => {
 			<div className="container">
 				<h1 className="title office__title">Личный кабинет</h1>
 				<div className="office__profile-info">
-					<p>
+					<p className="office__text">
 						<strong>Ваше Имя:</strong> Error
 					</p>
-					<p>
+					<p className="office__text">
 						<strong>Электронная почта:</strong> Error
 					</p>
-					<p>
+					<p className="office__text">
 						<strong>Адрес:</strong> Error
 					</p>
 				</div>

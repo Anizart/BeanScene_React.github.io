@@ -11,10 +11,12 @@ const Header = ({
 	mode,
 	isSignUpOpen,
 	isSignInOpen,
+	isSearchOpen,
 	onToggleBurger,
 	onToggleMode,
 	setIsSignUpOpen,
 	setIsSignInOpen,
+	setIsSearchOpen,
 }) => {
 	useEffect(() => {
 		const header = document.querySelector(".header");
@@ -70,7 +72,8 @@ const Header = ({
 							</Link>
 							<button
 								type="button"
-								className="header__btn-search">
+								className="header__btn-search"
+								onClick={() => setIsSearchOpen(!isSearchOpen)}>
 								<img
 									src={search}
 									alt="поиск"

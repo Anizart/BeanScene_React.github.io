@@ -7,7 +7,11 @@ const ModalSignIn = ({ isSignInOpen, setIsSignInOpen, onSwitchToSignIn }) => {
 			className={`modal ${isSignInOpen ? "modal-area-active" : ""}`}
 			onClick={() => setIsSignInOpen(!isSignInOpen)}
 			tabIndex="-1">
-			<form action="#" method="post" className="modal__wrapper">
+			<form
+				action="#"
+				method="post"
+				className="modal__wrapper"
+				onClick={(e) => e.stopPropagation()}>
 				<div className="modal__text">
 					С возвращением! Лучшие моменты с кофе уже ждут вас.
 				</div>
