@@ -16,14 +16,12 @@ const ModalSignIn = ({ isSignInOpen, setIsSignInOpen, onSwitchToSignIn }) => {
 					С возвращением! Лучшие моменты с кофе уже ждут вас.
 				</div>
 				<div className="modal__wrapper-input">
-					<label
-						htmlFor="email-authorization"
-						className="modal__label">
+					<label htmlFor="emailSignIn" className="modal__label">
 						Электронная почта
 					</label>
 					<input
 						type="text"
-						name="email-signIn"
+						name="emailSignIn"
 						id="email-authorization"
 						className="modal__input"
 						tabIndex="1"
@@ -31,9 +29,7 @@ const ModalSignIn = ({ isSignInOpen, setIsSignInOpen, onSwitchToSignIn }) => {
 					/>
 				</div>
 				<div className="modal__wrapper-input">
-					<label
-						htmlFor="password-authorization"
-						className="modal__label">
+					<label htmlFor="password-signIn" className="modal__label">
 						Пароль
 					</label>
 					<input
