@@ -52,6 +52,9 @@ body {
 		.ignore-dark-theme {
 			color: inherit;
 		}
+		.office__text {
+			color: var(--dark-theme-text);
+		}
 	}
 }
 
@@ -153,6 +156,10 @@ img {
 		background: #fdcc83;
 		transition: 0.5s;
 	}
+}
+
+.swiper-slide {
+	padding-bottom: 45px;
 }
 
 .modal {

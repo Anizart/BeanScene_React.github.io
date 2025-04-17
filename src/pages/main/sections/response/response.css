@@ -29,9 +29,6 @@
 	.response__wrapper-sw {
 		position: relative;
 	}
-	.swiper-slide {
-		padding-bottom: 45px;
-	}
 	.response__wrapper {
 		min-height: clamp(200px, 15vw, 500px);
 		height: 100%;

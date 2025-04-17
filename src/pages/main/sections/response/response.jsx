@@ -1,6 +1,6 @@
 import React from "react";
 import "./response.css";
-import MenuSlider from "./response-cards";
+import ResponseSlider from "../../components/response-card/response-card";
 import splash from "@assets/spray.webp";
 
 const Response = () => {
@@ -28,7 +28,7 @@ const Response = () => {
 					Нам доверяют тысячи довольных клиентов
 				</div>
 				<div className="response__wrapper-sw">
-					<MenuSlider />
+					<ResponseSlider />
 					<div className="response__wrapper-btn">
 						<div className="response__rewind-left"></div>
 						<div className="response__rewind-right"></div>

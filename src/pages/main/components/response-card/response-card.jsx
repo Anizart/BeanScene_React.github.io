@@ -3,7 +3,7 @@ import { Navigation } from "swiper/modules";
 
 import user from "@assets/commentator.png";
 
-const MenuSlider = () => {
+const ResponseSlider = () => {
 	return (
 		<Swiper
 			modules={[Navigation]}
@@ -44,4 +44,4 @@ const MenuSlider = () => {
 	);
 };
 
-export default MenuSlider;
+export default ResponseSlider;

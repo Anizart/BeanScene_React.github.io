@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./menu.css";
-import Cards from "./menu-cards/menu-cards";
+import MenuCard from "../../components/menu-card/menu-card";
 import img from "@assets/be-over.png";
+import { getProducts } from "@/shared/api/products";
 
 const Menu = () => {
+	const [products, setProducts] = useState([]);
+
+	useEffect(() => {
+		getProducts().then(setProducts);
+	}, []); // [] то есть не следи ни зачем, а сработай 1 раз при рендере
+
 	return (
 		<section className="section menu" id="menu">
 			<div className="container">
@@ -13,7 +20,11 @@ const Menu = () => {
 					новая чашка, которую стоит попробовать.
 				</div>
 				<div className="menu__wrapper">
-					<Empty />
+					{products.length > 0 ? (
+						<MenuCard products={products} />
+					) : (
+						<Empty />
+					)}
 				</div>
 			</div>
 		</section>
@@ -30,8 +41,4 @@ const Empty = () => {
 			<p>Сейчас закончилось, но скоро появится</p>
 		</div>
 	);
-};
-
-const CardWithdrawal = () => {
-	return <Cards />;
 };
