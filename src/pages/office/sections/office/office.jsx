@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./office.css";
 
 const Office = () => {
+	useEffect(() => {
+		const wrapper = document.querySelector(".wrapper");
+		if (wrapper) wrapper.classList.add("flex-layout");
+
+		return () => {
+			if (wrapper) wrapper.classList.remove("flex-layout");
+		};
+	}, []);
+
 	return (
 		<section className="office">
 			<div className="container">

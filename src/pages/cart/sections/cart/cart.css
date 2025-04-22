@@ -1,20 +1,7 @@
-/* body {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	background-color: #fff;
-	color: #707070;
-}
+@import url(../../../flex-layout.css);
 
-.main {
-	flex: 1 0 auto;
-	width: 100%;
-	padding: 40px 20px;
-	margin-top: clamp(60px, 10vw, 100px);
-} */
-
-.header.basket {
-	background-color: #452809;
+.basket {
+	padding-bottom: clamp(72px, 14vw, 160px);
 }
 
 .title-shopping {

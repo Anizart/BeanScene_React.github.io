@@ -1,11 +1,19 @@
 import React from "react";
+import { useEffect } from "react";
 import "./cart.css";
 import cart from "@assets/svg/cart.svg";
 import Cards from "./cards/cards";
 import { Link } from "react-router";
 
 const Cart = () => {
-	// const [cards, setCards] = useState({});
+	useEffect(() => {
+		const wrapper = document.querySelector(".wrapper");
+		if (wrapper) wrapper.classList.add("flex-layout");
+
+		return () => {
+			if (wrapper) wrapper.classList.remove("flex-layout");
+		};
+	}, []);
 
 	return (
 		<section className="basket">

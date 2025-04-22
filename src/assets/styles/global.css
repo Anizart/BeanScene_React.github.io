@@ -55,6 +55,9 @@ body {
 		.office__text {
 			color: var(--dark-theme-text);
 		}
+		.basket__text {
+			color: var(--dark-theme-text);
+		}
 	}
 }
 
@@ -135,7 +138,9 @@ img {
 
 .btn {
 	height: clamp(38px, 5vw, 48px);
-	max-width: clamp(110px, 12vw, 150px);
+	max-width: fit-content;
+	width: 100%;
+	min-width: fit-content;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -144,7 +149,7 @@ img {
 	background: #f9c06a;
 	transition: 0.5s;
 	line-height: 1.3;
-	padding: 0 26px;
+	padding: 0 clamp(15px, 2vw, 26px);
 
 	color: #1e1e1e;
 	font-size: clamp(12px, 1.2vw, 16px);

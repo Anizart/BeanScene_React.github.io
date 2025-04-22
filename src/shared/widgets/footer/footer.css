@@ -2,7 +2,7 @@
 	color: #fff;
 	text-align: left;
 
-	padding: 160px 0 72px;
+	padding: clamp(72px, 14vw, 160px) 0 72px;
 	background: url("@assets/footer_bg.webp") center / cover no-repeat;
 	position: relative;
 	.title {
@@ -89,6 +89,14 @@
 		}
 	}
 }
+@media (max-width: 1039px) {
+	.footer {
+		.footer__wrapper-img-pngwing-left,
+		.footer__wrapper-img-pngwing-right {
+			display: none;
+		}
+	}
+}
 @media (max-width: 991px) {
 	.footer {
 		text-align: center;
@@ -107,14 +115,6 @@
 		}
 		.footer__wrapper-icon {
 			margin-left: auto;
-		}
-	}
-}
-@media (max-width: 899px) {
-	.footer {
-		.footer__wrapper-img-pngwing-left,
-		.footer__wrapper-img-pngwing-right {
-			display: none;
 		}
 	}
 }

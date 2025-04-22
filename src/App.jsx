@@ -24,6 +24,10 @@ const App = () => {
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 
 	useEffect(() => {
+		document.body.classList.toggle("hidden", isBurgerOpen);
+	}, [isBurgerOpen]);
+
+	useEffect(() => {
 		document.body.classList.toggle("hidden", isSignUpOpen || isSignInOpen);
 	}, [isSignUpOpen, isSignInOpen]);
 

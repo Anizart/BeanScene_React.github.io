@@ -1,0 +1,19 @@
+.flex-layout {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.flex-layout .main {
+	flex: 1;
+	margin-top: clamp(80px, 15vw, 188px);
+}
+
+.flex-layout .header {
+	background: rgba(87, 50, 8, 0.4);
+	backdrop-filter: blur(4px);
+}
+
+.flex-layout .header__item:nth-child(n + 3) {
+	display: none;
+}
