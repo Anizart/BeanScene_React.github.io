@@ -1,11 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { regist } from "@/shared/api/auth";
 import "./signup.css";
 
 const ModalSignUp = ({ isSignUpOpen, setIsSignUpOpen, onSwitchToSignIn }) => {
+	const [formData, setFormData] = useState({
+		name: "",
+		email: "",
+		address: "",
+		password: "",
+	});
+
+	const handleChange = (e) => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			const res = await regist(formData);
+			//! модалка
+			console.log(res);
+		} catch (err) {
+			console.error("Ошибка регистрации (фронт)", err);
+			//! модалка
+		}
+	};
+
 	return (
 		<div
 			className={`modal ${isSignUpOpen ? "modal-area-active" : ""}`}
 			onClick={() => setIsSignUpOpen(!isSignUpOpen)}
+			onSubmit={handleSubmit}
 			tabIndex="-1">
 			<form
 				action="#"
@@ -25,6 +50,7 @@ const ModalSignUp = ({ isSignUpOpen, setIsSignUpOpen, onSwitchToSignIn }) => {
 						name="name"
 						id="name"
 						className="modal__input"
+						onChange={handleChange}
 						tabIndex="1"
 						required
 					/>
@@ -38,6 +64,7 @@ const ModalSignUp = ({ isSignUpOpen, setIsSignUpOpen, onSwitchToSignIn }) => {
 						name="email"
 						id="email"
 						className="modal__input"
+						onChange={handleChange}
 						tabIndex="2"
 						required
 					/>
@@ -52,6 +79,7 @@ const ModalSignUp = ({ isSignUpOpen, setIsSignUpOpen, onSwitchToSignIn }) => {
 						name="address"
 						id="address"
 						className="modal__input"
+						onChange={handleChange}
 						tabIndex="3"
 						required
 					/>
@@ -73,6 +101,7 @@ const ModalSignUp = ({ isSignUpOpen, setIsSignUpOpen, onSwitchToSignIn }) => {
 						name="password"
 						id="password"
 						className="modal__input"
+						onChange={handleChange}
 						tabIndex="4"
 						required
 					/>

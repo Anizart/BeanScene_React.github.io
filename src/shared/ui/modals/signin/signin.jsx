@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import { login } from "@/shared/api/auth";
 import "./signin.css";
 
 const ModalSignIn = ({ isSignInOpen, setIsSignInOpen, onSwitchToSignIn }) => {
+	const [formData, setFormData] = useState({
+		email: "",
+		password: "",
+	});
+
+	const handleChange = (e) => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		try {
+			const res = await login(formData);
+			//! модалка
+			console.log(res);
+		} catch (err) {
+			console.error("Ошибка авторизации (фронт)", err);
+			//! модалка
+		}
+	};
+
 	return (
 		<div
 			className={`modal ${isSignInOpen ? "modal-area-active" : ""}`}
 			onClick={() => setIsSignInOpen(!isSignInOpen)}
+			onSubmit={handleSubmit}
 			tabIndex="-1">
 			<form
 				action="#"
@@ -21,9 +44,10 @@ const ModalSignIn = ({ isSignInOpen, setIsSignInOpen, onSwitchToSignIn }) => {
 					</label>
 					<input
 						type="text"
-						name="emailSignIn"
+						name="email"
 						id="email-authorization"
 						className="modal__input"
+						onChange={handleChange}
 						tabIndex="1"
 						required
 					/>
@@ -34,9 +58,10 @@ const ModalSignIn = ({ isSignInOpen, setIsSignInOpen, onSwitchToSignIn }) => {
 					</label>
 					<input
 						type="text"
-						name="password-signIn"
+						name="password"
 						id="password-authorization"
 						className="modal__input"
+						onChange={handleChange}
 						tabIndex="2"
 						required
 					/>
