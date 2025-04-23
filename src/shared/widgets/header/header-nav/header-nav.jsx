@@ -1,14 +1,42 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router-dom";
+import { checkAuth } from "@/shared/api/auth";
 
-const Nav = () => {
+const Nav = ({ isSignInOpen, setIsSignInOpen }) => {
+	const navigate = useNavigate();
+
+	const handleOfficeClick = async (e) => {
+		e.preventDefault();
+
+		try {
+			const user = await checkAuth();
+
+			if (!user) {
+				console.log("Пользователь не авторизован");
+
+				if (typeof setIsSignInOpen === "function") {
+					setIsSignInOpen(!isSignInOpen);
+				}
+
+				return;
+			}
+
+			navigate("/office");
+		} catch (err) {
+			console.error("Ошибка при проверке пользователя:", err);
+			e.preventDefault();
+		}
+	};
+
 	return (
 		<nav className="header__nav">
 			<ul className="header__menu">
 				<li className="header__item">
 					<Link
+						type="button"
 						to="/office"
 						id="office"
+						onClick={handleOfficeClick}
 						className="header__link header__link-accent">
 						Офис
 					</Link>

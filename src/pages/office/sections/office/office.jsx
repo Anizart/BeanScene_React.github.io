@@ -1,7 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { API_URL } from "@/shared/api/products";
 import "./office.css";
 
 const Office = () => {
+	const [userData, setUserData] = useState({
+		name: "Загрузка...",
+		email: "Загрузка...",
+		address: "Загрузка...",
+		points: "Загрузка...",
+	});
+
 	useEffect(() => {
 		const wrapper = document.querySelector(".wrapper");
 		if (wrapper) wrapper.classList.add("flex-layout");
@@ -11,6 +19,31 @@ const Office = () => {
 		};
 	}, []);
 
+	useEffect(() => {
+		const fetchUserData = async () => {
+			try {
+				const res = await fetch(`${API_URL}user`, {
+					method: "GET",
+					credentials: "include",
+				});
+
+				if (!res.ok) return;
+
+				const data = await res.json();
+				setUserData({
+					name: data.name,
+					email: data.email,
+					address: data.address,
+					points: data.points || 0,
+				});
+			} catch (err) {
+				console.error("Ошибка при получении данных пользователя:", err);
+			}
+		};
+
+		fetchUserData();
+	}, []);
+
 	return (
 		<section className="office">
 			<div className="container">
@@ -18,18 +51,18 @@ const Office = () => {
 				<div className="d-flex justify-content-between">
 					<div className="office__profile-info">
 						<p className="office__text">
-							<strong>Ваше Имя:</strong> Error
+							<strong>Ваше Имя:</strong> {userData.name}
 						</p>
 						<p className="office__text">
-							<strong>Электронная почта:</strong> Error
+							<strong>Электронная почта:</strong> {userData.email}
 						</p>
 						<p className="office__text">
-							<strong>Адрес:</strong> Error
+							<strong>Адрес:</strong> {userData.address}
 						</p>
 					</div>
 					<div>
 						<p className="office__text">
-							<strong>Баллы: </strong> Error
+							<strong>Баллы: </strong> {userData.points}
 						</p>
 					</div>
 				</div>

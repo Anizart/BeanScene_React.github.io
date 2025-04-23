@@ -1,12 +1,41 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { checkAuth } from "@/shared/api/auth";
 
-const MenuCard = ({ products }) => {
+const MenuCard = ({ products, isSignInOpen, setIsSignInOpen }) => {
 	//+ Для дублирования карточек:
 	const duplicateSlides = [...products];
 	while (duplicateSlides.length < 16) {
 		duplicateSlides.push(...products);
 	}
+
+	//+ Для проверки пользователя:
+	const handleOrderClick = async (productId) => {
+		try {
+			const user = await checkAuth();
+
+			if (!user) {
+				console.log("Пользователь не авторизован");
+
+				if (typeof setIsSignInOpen === "function") {
+					setIsSignInOpen(!isSignInOpen);
+				}
+
+				return;
+			}
+
+			//? ! Добавление товара в корзину можно реализовать здесь
+			console.log(`Товар с ID ${productId} добавлен в корзину`);
+			// await addToCart(productId);
+
+			// ? Позже по ID выводи карточки, но в корзине меняй ID на внутренний
+		} catch (error) {
+			console.error(
+				"Ошибка при попытке добавить товар в корзину:",
+				error,
+			);
+		}
+	};
 
 	return (
 		<Swiper
@@ -44,7 +73,7 @@ const MenuCard = ({ products }) => {
 						<button
 							type="button"
 							className="btn menu__btn menu__btn-product"
-							id={product.id}>
+							onClick={() => handleOrderClick(product.id)}>
 							Заказать
 						</button>
 					</div>

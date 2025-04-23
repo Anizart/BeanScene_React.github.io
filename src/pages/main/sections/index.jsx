@@ -7,12 +7,15 @@ import Demonstration from "./demonstration/demonstration";
 import Response from "./response/response";
 import Subscribe from "./subscribe/subscribe";
 
-const IndexPage = () => {
+const IndexPage = ({ isSignInOpen, setIsSignInOpen }) => {
 	return (
 		<>
 			<Welcome />
 			<AboutUs />
-			<Menu />
+			<Menu
+				isSignInOpen={isSignInOpen}
+				setIsSignInOpen={setIsSignInOpen}
+			/>
 			<Priorities />
 			<Chance />
 			<Demonstration />

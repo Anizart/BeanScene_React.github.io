@@ -13,9 +13,14 @@ import { Routes, Route } from "react-router";
 
 const App = () => {
 	//+ header:
-	const [mode, onToggleMode] = useState(
-		JSON.parse(localStorage.getItem("mode") ?? "false"),
-	);
+	const [mode, onToggleMode] = useState(() => {
+		const saved = localStorage.getItem("mode");
+		if (saved === null) {
+			localStorage.setItem("mode", JSON.stringify(false));
+			return false;
+		}
+		return JSON.parse(saved);
+	});
 
 	const [isBurgerOpen, onToggleBurger] = useState(false);
 
@@ -56,7 +61,15 @@ const App = () => {
 			/>
 			<main className="main">
 				<Routes>
-					<Route path="/" element={<IndexPage />} />
+					<Route
+						path="/"
+						element={
+							<IndexPage
+								isSignInOpen={isSignInOpen}
+								setIsSignInOpen={setIsSignInOpen}
+							/>
+						}
+					/>
 					<Route path="/office" element={<Office />} />
 					<Route path="/cart" element={<Cart />} />
 					<Route path="*" element={<NotfoundPage />} />

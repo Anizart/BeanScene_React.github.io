@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./menu.css";
+
 import MenuCard from "../../components/menu-card/menu-card";
 import img from "@assets/be-over.png";
 import { getProducts } from "@/shared/api/products";
 
-const Menu = () => {
+const Menu = ({ isSignInOpen, setIsSignInOpen }) => {
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
@@ -21,7 +22,11 @@ const Menu = () => {
 				</div>
 				<div className="menu__wrapper">
 					{products.length > 0 ? (
-						<MenuCard products={products} />
+						<MenuCard
+							products={products}
+							isSignInOpen={isSignInOpen}
+							setIsSignInOpen={setIsSignInOpen}
+						/>
 					) : (
 						<Empty />
 					)}

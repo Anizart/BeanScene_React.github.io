@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./header.css";
+
 import Nav from "./header-nav/header-nav";
 import logo from "@assets/svg/logo.svg";
 import cart from "@assets/svg/basket.svg";
@@ -54,7 +55,10 @@ const Header = ({
 					</div>
 					<div
 						className={`header__wrapper-nav ${isBurgerOpen ? "active-burger" : ""}`}>
-						<Nav />
+						<Nav
+							isSignInOpen={isSignInOpen}
+							setIsSignInOpen={setIsSignInOpen}
+						/>
 						<div className="header__wrapper-elem">
 							<div
 								className={`header__toggle-container ${mode ? "toggle-container-bg" : ""}`}

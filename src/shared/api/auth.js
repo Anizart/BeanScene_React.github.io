@@ -48,8 +48,6 @@ export const login = async (author) => {
 	}
 };
 
-//! Реализовать:
-
 export const checkAuth = async () => {
 	try {
 		const res = await fetch(`${API_URL}auth/check-auth`, {
@@ -63,6 +61,8 @@ export const checkAuth = async () => {
 		return null;
 	}
 };
+
+//! Реализовать:
 
 export const logout = async () => {
 	try {
