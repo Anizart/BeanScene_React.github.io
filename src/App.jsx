@@ -7,6 +7,7 @@ import Footer from "./shared/widgets/footer/footer";
 import ModalSearch from "./shared/ui/modals/search/search";
 import ModalSignIn from "./shared/ui/modals/signin/signin";
 import ModalSignUp from "./shared/ui/modals/signup/signup";
+import ModalСonfirmation from "./shared/ui/modals/confirmation/confirmation";
 import ModalMessage from "./shared/ui/modals/message/message";
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router";
@@ -27,6 +28,7 @@ const App = () => {
 	const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 	const [isSignInOpen, setIsSignInOpen] = useState(false);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
+	const [isСonfirmation, setIsСonfirmation] = useState(false);
 
 	useEffect(() => {
 		document.body.classList.toggle("hidden", isBurgerOpen);
@@ -44,6 +46,10 @@ const App = () => {
 	useEffect(() => {
 		document.body.classList.toggle("hidden", isSearchOpen);
 	}, [isSearchOpen]);
+
+	useEffect(() => {
+		document.body.classList.toggle("hidden", isСonfirmation);
+	}, [isСonfirmation]);
 
 	return (
 		<div className="wrapper">
@@ -70,7 +76,15 @@ const App = () => {
 							/>
 						}
 					/>
-					<Route path="/office" element={<Office />} />
+					<Route
+						path="/office"
+						element={
+							<Office
+								isСonfirmation={isСonfirmation}
+								setIsСonfirmation={setIsСonfirmation}
+							/>
+						}
+					/>
 					<Route path="/cart" element={<Cart />} />
 					<Route path="*" element={<NotfoundPage />} />
 				</Routes>
@@ -92,9 +106,13 @@ const App = () => {
 				setIsSignUpOpen={setIsSignUpOpen}
 				isSignUpOpen={isSignUpOpen}
 				onSwitchToSignIn={() => {
-					setIsSignUpOpen(false); // Я бы написал через !, но gpt написал лучше явно закрывать, а так я понимаю это то же самое setIsSignUpOpen(!isSignUpOpen)
+					setIsSignUpOpen(false);
 					setIsSignInOpen(true);
 				}}
+			/>
+			<ModalСonfirmation
+				isСonfirmation={isСonfirmation}
+				setIsСonfirmation={setIsСonfirmation}
 			/>
 			<ModalMessage />
 		</div>

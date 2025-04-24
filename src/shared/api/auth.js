@@ -62,8 +62,6 @@ export const checkAuth = async () => {
 	}
 };
 
-//! Реализовать:
-
 export const logout = async () => {
 	try {
 		const res = await fetch(`${API_URL}auth/logout`, {

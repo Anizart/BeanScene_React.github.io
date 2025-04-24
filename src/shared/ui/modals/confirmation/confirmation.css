@@ -1,0 +1,13 @@
+.modal__wrapper-btn {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	.btn-exit {
+		color: #fff;
+		background-color: #e44848;
+	}
+	.btn-exit:hover {
+		color: #fff;
+		background-color: #fc8888;
+	}
+}

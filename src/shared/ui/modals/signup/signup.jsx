@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import { regist } from "@/shared/api/auth";
-import "./signup.css";
 
 const ModalSignUp = ({ isSignUpOpen, setIsSignUpOpen, onSwitchToSignIn }) => {
 	const [formData, setFormData] = useState({
@@ -20,13 +20,16 @@ const ModalSignUp = ({ isSignUpOpen, setIsSignUpOpen, onSwitchToSignIn }) => {
 			const res = await regist(formData);
 			//! модалка
 			console.log(res);
+			setIsSignUpOpen(!isSignUpOpen);
 		} catch (err) {
 			console.error("Ошибка регистрации (фронт)", err);
 			//! модалка
 		}
 	};
 
-	return (
+	if (!isSignUpOpen) return null; // Если модалка закрыта — ничего не рендерю
+
+	const modalContent = (
 		<div
 			className={`modal ${isSignUpOpen ? "modal-area-active" : ""}`}
 			onClick={() => setIsSignUpOpen(!isSignUpOpen)}
@@ -118,6 +121,8 @@ const ModalSignUp = ({ isSignUpOpen, setIsSignUpOpen, onSwitchToSignIn }) => {
 			</form>
 		</div>
 	);
+
+	return createPortal(modalContent, document.getElementById("modal-root"));
 };
 
 export default ModalSignUp;

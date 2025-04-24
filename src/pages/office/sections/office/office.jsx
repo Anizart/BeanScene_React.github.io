@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { API_URL } from "@/shared/api/products";
 import "./office.css";
 
-const Office = () => {
+const Office = ({ isСonfirmation, setIsСonfirmation }) => {
 	const [userData, setUserData] = useState({
 		name: "Загрузка...",
 		email: "Загрузка...",
@@ -70,7 +70,10 @@ const Office = () => {
 					<button type="button" className="btn btn-edit">
 						Редактировать профиль
 					</button>
-					<button type="button" className="btn btn-exit">
+					<button
+						type="button"
+						className="btn btn-exit"
+						onClick={() => setIsСonfirmation(!isСonfirmation)}>
 						Выйти
 					</button>
 				</div>

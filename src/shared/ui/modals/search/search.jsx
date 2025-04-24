@@ -1,8 +1,10 @@
 import React from "react";
-import "./search.css";
+import { createPortal } from "react-dom";
 
 const ModalSearch = ({ isSearchOpen, setIsSearchOpen }) => {
-	return (
+	if (!isSearchOpen) return null;
+
+	const modalContent = (
 		<div
 			className={`modal modal-search ${isSearchOpen ? "modal-area-active" : ""}`}
 			onClick={() => setIsSearchOpen(!isSearchOpen)}>
@@ -25,6 +27,8 @@ const ModalSearch = ({ isSearchOpen, setIsSearchOpen }) => {
 			</form>
 		</div>
 	);
+
+	return createPortal(modalContent, document.getElementById("modal-root"));
 };
 
 export default ModalSearch;

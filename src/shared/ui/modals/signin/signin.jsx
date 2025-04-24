@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createPortal } from "react-dom";
 import { login } from "@/shared/api/auth";
-import "./signin.css";
 
 const ModalSignIn = ({ isSignInOpen, setIsSignInOpen, onSwitchToSignIn }) => {
+	const navigate = useNavigate();
+
 	const [formData, setFormData] = useState({
 		email: "",
 		password: "",
@@ -18,13 +21,17 @@ const ModalSignIn = ({ isSignInOpen, setIsSignInOpen, onSwitchToSignIn }) => {
 			const res = await login(formData);
 			//! модалка
 			console.log(res);
+			navigate("/office");
+			setIsSignInOpen(!isSignInOpen);
 		} catch (err) {
 			console.error("Ошибка авторизации (фронт)", err);
 			//! модалка
 		}
 	};
 
-	return (
+	if (!isSignInOpen) return null;
+
+	const modalContent = (
 		<div
 			className={`modal ${isSignInOpen ? "modal-area-active" : ""}`}
 			onClick={() => setIsSignInOpen(!isSignInOpen)}
@@ -78,6 +85,8 @@ const ModalSignIn = ({ isSignInOpen, setIsSignInOpen, onSwitchToSignIn }) => {
 			</form>
 		</div>
 	);
+
+	return createPortal(modalContent, document.getElementById("modal-root"));
 };
 
 export default ModalSignIn;
