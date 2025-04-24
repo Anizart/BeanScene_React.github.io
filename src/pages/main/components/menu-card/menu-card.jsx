@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { checkAuth } from "@/shared/api/auth";
+import { addToBasket } from "@/shared/api/cart";
 
 const MenuCard = ({ products, isSignInOpen, setIsSignInOpen }) => {
 	//+ Для дублирования карточек:
@@ -24,11 +25,13 @@ const MenuCard = ({ products, isSignInOpen, setIsSignInOpen }) => {
 				return;
 			}
 
-			//? ! Добавление товара в корзину можно реализовать здесь
-			console.log(`Товар с ID ${productId} добавлен в корзину`);
-			// await addToCart(productId);
+			const response = await addToBasket(productId);
 
-			// ? Позже по ID выводи карточки, но в корзине меняй ID на внутренний
+			if (!response.ok) {
+				throw new Error("Ошибка при добавлении товара в корзину");
+			}
+
+			console.log(`Товар с ID ${productId} добавлен в корзину`);
 		} catch (error) {
 			console.error(
 				"Ошибка при попытке добавить товар в корзину:",
@@ -69,7 +72,7 @@ const MenuCard = ({ products, isSignInOpen, setIsSignInOpen }) => {
 						<div className="menu__weights">
 							{product.description}
 						</div>
-						<div className="menu__price">{product.price}$</div>
+						<div className="menu__price">{product.price} ₽</div>
 						<button
 							type="button"
 							className="btn menu__btn menu__btn-product"

@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
+
 import { regist } from "@/shared/api/auth";
 
-const ModalSignUp = ({ isSignUpOpen, setIsSignUpOpen, onSwitchToSignIn }) => {
+const ModalSignUp = ({
+	isSignUpOpen,
+	setIsSignUpOpen,
+	onSwitchToSignIn,
+	setModalMessage,
+}) => {
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -18,8 +24,14 @@ const ModalSignUp = ({ isSignUpOpen, setIsSignUpOpen, onSwitchToSignIn }) => {
 		e.preventDefault();
 		try {
 			const res = await regist(formData);
-			//! модалка
-			console.log(res);
+			setModalMessage({
+				isOpen: true,
+				message: res.message || "Успешная регистрация!",
+			});
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+			}, 3000);
+
 			setIsSignUpOpen(!isSignUpOpen);
 		} catch (err) {
 			console.error("Ошибка регистрации (фронт)", err);

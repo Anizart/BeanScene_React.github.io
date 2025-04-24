@@ -32,6 +32,10 @@ const App = () => {
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const [isСonfirmation, setIsСonfirmation] = useState(false);
 	const [isModalEdit, setIsModalEdit] = useState(false);
+	const [isModalMessage, setModalMessage] = useState({
+		isOpen: false,
+		message: "",
+	});
 
 	useEffect(() => {
 		document.body.classList.toggle("hidden", isBurgerOpen);
@@ -118,6 +122,7 @@ const App = () => {
 					setIsSignUpOpen(false);
 					setIsSignInOpen(true);
 				}}
+				setModalMessage={setModalMessage}
 			/>
 			<ModalСonfirmation
 				isСonfirmation={isСonfirmation}
@@ -127,7 +132,11 @@ const App = () => {
 				isModalEdit={isModalEdit}
 				setIsModalEdit={setIsModalEdit}
 			/>
-			<ModalMessage />
+			<ModalMessage
+				isOpen={isModalMessage.isOpen}
+				message={isModalMessage.message}
+				modalMessage={isModalMessage}
+			/>
 		</div>
 	);
 };
