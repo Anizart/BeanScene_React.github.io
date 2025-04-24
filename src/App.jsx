@@ -1,3 +1,6 @@
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router";
+
 import Header from "./shared/widgets/header/header";
 import IndexPage from "./pages/main/sections";
 import Office from "./pages/office/sections/office/office";
@@ -8,9 +11,8 @@ import ModalSearch from "./shared/ui/modals/search/search";
 import ModalSignIn from "./shared/ui/modals/signin/signin";
 import ModalSignUp from "./shared/ui/modals/signup/signup";
 import ModalСonfirmation from "./shared/ui/modals/confirmation/confirmation";
+import ModalEdit from "./shared/ui/modals/edit/modal-edit";
 import ModalMessage from "./shared/ui/modals/message/message";
-import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router";
 
 const App = () => {
 	//+ header:
@@ -29,6 +31,7 @@ const App = () => {
 	const [isSignInOpen, setIsSignInOpen] = useState(false);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const [isСonfirmation, setIsСonfirmation] = useState(false);
+	const [isModalEdit, setIsModalEdit] = useState(false);
 
 	useEffect(() => {
 		document.body.classList.toggle("hidden", isBurgerOpen);
@@ -50,6 +53,10 @@ const App = () => {
 	useEffect(() => {
 		document.body.classList.toggle("hidden", isСonfirmation);
 	}, [isСonfirmation]);
+
+	useEffect(() => {
+		document.body.classList.toggle("hidden", isModalEdit);
+	}, [isModalEdit]);
 
 	return (
 		<div className="wrapper">
@@ -81,7 +88,9 @@ const App = () => {
 						element={
 							<Office
 								isСonfirmation={isСonfirmation}
+								isModalEdit={isModalEdit}
 								setIsСonfirmation={setIsСonfirmation}
+								setIsModalEdit={setIsModalEdit}
 							/>
 						}
 					/>
@@ -113,6 +122,10 @@ const App = () => {
 			<ModalСonfirmation
 				isСonfirmation={isСonfirmation}
 				setIsСonfirmation={setIsСonfirmation}
+			/>
+			<ModalEdit
+				isModalEdit={isModalEdit}
+				setIsModalEdit={setIsModalEdit}
 			/>
 			<ModalMessage />
 		</div>

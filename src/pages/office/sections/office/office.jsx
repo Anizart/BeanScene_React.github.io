@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { API_URL } from "@/shared/api/products";
 import "./office.css";
 
-const Office = ({ isСonfirmation, setIsСonfirmation }) => {
+const Office = ({
+	isСonfirmation,
+	isModalEdit,
+	setIsСonfirmation,
+	setIsModalEdit,
+}) => {
 	const [userData, setUserData] = useState({
 		name: "Загрузка...",
 		email: "Загрузка...",
@@ -34,7 +39,7 @@ const Office = ({ isСonfirmation, setIsСonfirmation }) => {
 					name: data.name,
 					email: data.email,
 					address: data.address,
-					points: data.points || 0,
+					bonuses: data.bonuses,
 				});
 			} catch (err) {
 				console.error("Ошибка при получении данных пользователя:", err);
@@ -62,12 +67,15 @@ const Office = ({ isСonfirmation, setIsСonfirmation }) => {
 					</div>
 					<div>
 						<p className="office__text">
-							<strong>Баллы: </strong> {userData.points}
+							<strong>Баллы: </strong> {userData.bonuses}
 						</p>
 					</div>
 				</div>
 				<div className="office__wrapper-btn">
-					<button type="button" className="btn btn-edit">
+					<button
+						type="button"
+						className="btn btn-edit"
+						onClick={() => setIsModalEdit(!isModalEdit)}>
 						Редактировать профиль
 					</button>
 					<button
