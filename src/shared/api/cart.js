@@ -14,7 +14,7 @@ export const getBasket = async () => {
 	}
 };
 
-export const addToBasket = async (productId) => {
+export const addToBasket = async (productId, additives = "Без добавок") => {
 	const response = await fetch(`${API_URL}basket`, {
 		method: "POST",
 		headers: {
@@ -22,6 +22,7 @@ export const addToBasket = async (productId) => {
 		},
 		body: JSON.stringify({
 			productId,
+			additives,
 		}),
 		credentials: "include",
 	});

@@ -1,83 +1,101 @@
-import React from "react";
+import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import "./additives.css";
 
-const ModalAdditives = () => {
-	return (
-		<div class="modal modal-additives" data-modal-additives>
-			<div class="modal__wrapper modal__wrapper-additives">
-				<div class="modal__text">Добавить в кофе</div>
-				<div class="modal__wrapper-elements">
-					<div class="modal__additives">
-						<div class="modal__wrapper-img">
-							<img
-								src="img/coconut.png"
-								alt="Кокос"
-								class="modal__img"
-							/>
+import { addToBasket } from "@/shared/api/cart";
+
+const additivesList = [
+	{ name: "Кокос", img: "/react-app/src/assets/coconut.png" },
+	{ name: "Банан", img: "/react-app/src/assets/banana.png" },
+	{ name: "Сахар", img: "/react-app/src/assets/sugar.png" },
+];
+
+const ModalAdditives = ({
+	productId,
+	isModalAdditives,
+	setIsModalAdditives,
+}) => {
+	const [selectedAdditives, setSelectedAdditives] = useState([]);
+
+	if (!isModalAdditives) return null;
+
+	const toggleAdditive = (additive) => {
+		setSelectedAdditives((prev) =>
+			prev.includes(additive)
+				? prev.filter((item) => item !== additive)
+				: [...prev, additive],
+		);
+	};
+
+	const handleSubmit = async () => {
+		try {
+			const additivesStr =
+				selectedAdditives.length > 0
+					? selectedAdditives.join(", ")
+					: "Без добавок";
+
+			await addToBasket(productId, additivesStr);
+
+			console.log("Заказ отправлен!");
+			setIsModalAdditives(!isModalAdditives);
+		} catch (err) {
+			console.error("Ошибка при отправке заказа:", err);
+		}
+	};
+
+	const modalContent = (
+		<div
+			className={`modal modal-additives ${isModalAdditives ? "modal-area-active" : ""}`}
+			onClick={() => setIsModalAdditives(!isModalAdditives)}>
+			<div
+				className="modal__wrapper modal__wrapper-additives"
+				onClick={(e) => e.stopPropagation()}>
+				<div className="modal__text">Добавить в кофе</div>
+				<div className="modal__wrapper-elements">
+					{additivesList.map(({ name, img }) => (
+						<div
+							key={name}
+							className={`modal__additives ${
+								selectedAdditives.includes(name)
+									? "selected"
+									: ""
+							}`}
+							onClick={() => toggleAdditive(name)}>
+							<div className="modal__wrapper-img">
+								<img
+									src={img}
+									alt={name}
+									className="modal__img"
+								/>
+							</div>
+							<div className="modal__additives-text">{name}</div>
+							<button type="button" className="btn modal__btn">
+								{selectedAdditives.includes(name)
+									? "Убрать"
+									: "Добавить"}
+							</button>
 						</div>
-						<div class="modal__additives-text">Кокос</div>
-						<button
-							type="submit"
-							class="btn modal__btn"
-							tabindex="1"
-							data-btn-add="1">
-							добавить
-						</button>
-					</div>
-					<div class="modal__additives">
-						<div class="modal__wrapper-img">
-							<img
-								src="img/banana.png"
-								alt="Банан"
-								class="modal__img"
-							/>
-						</div>
-						<div class="modal__additives-text">Банан</div>
-						<button
-							type="submit"
-							class="btn modal__btn"
-							tabindex="2"
-							data-btn-add="2">
-							добавить
-						</button>
-					</div>
-					<div class="modal__additives">
-						<div class="modal__wrapper-img">
-							<img
-								src="img/sugar.png"
-								alt="Сахар"
-								class="modal__img"
-							/>
-						</div>
-						<div class="modal__additives-text">Сахар</div>
-						<button
-							type="submit"
-							class="btn modal__btn"
-							tabindex="2"
-							data-btn-add="3">
-							добавить
-						</button>
-					</div>
+					))}
 				</div>
-				<div class="modal__wrapper-btn">
+				<div className="modal__wrapper-btn">
 					<button
 						type="submit"
-						class="btn modal__btn-cancellation"
-						tabindex="4"
-						data-btn-cancellation>
-						отмена
+						className="btn modal__btn-cancellation"
+						onClick={() => setIsModalAdditives(!isModalAdditives)}>
+						Отмена
 					</button>
 					<button
 						type="submit"
-						class="btn modal__btn"
-						tabindex="3"
-						data-btn-done>
-						готово
+						className="btn modal__btn"
+						onClick={handleSubmit}>
+						Заказать
 					</button>
 				</div>
 			</div>
 		</div>
 	);
+
+	return createPortal(modalContent, document.getElementById("modal-root"));
 };
 
 export default ModalAdditives;

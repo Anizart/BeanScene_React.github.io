@@ -1,9 +1,17 @@
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { checkAuth } from "@/shared/api/auth";
-import { addToBasket } from "@/shared/api/cart";
+import ModalAdditives from "@/shared/ui/modals/additives/additives";
 
 const MenuCard = ({ products, isSignInOpen, setIsSignInOpen }) => {
+	const [isModalAdditives, setIsModalAdditives] = useState(false);
+	const [selectedProductId, setSelectedProductId] = useState(null);
+
+	useEffect(() => {
+		document.body.classList.toggle("hidden", isModalAdditives);
+	}, [isModalAdditives]);
+
 	//+ Для дублирования карточек:
 	const duplicateSlides = [...products];
 	while (duplicateSlides.length < 16) {
@@ -25,64 +33,64 @@ const MenuCard = ({ products, isSignInOpen, setIsSignInOpen }) => {
 				return;
 			}
 
-			const response = await addToBasket(productId);
-
-			if (!response.ok) {
-				throw new Error("Ошибка при добавлении товара в корзину");
-			}
-
-			console.log(`Товар с ID ${productId} добавлен в корзину`);
+			setSelectedProductId(productId);
+			setIsModalAdditives(true);
 		} catch (error) {
-			console.error(
-				"Ошибка при попытке добавить товар в корзину:",
-				error,
-			);
+			console.error("Ошибка при открытии модального окна:", error);
 		}
 	};
 
 	return (
-		<Swiper
-			modules={[Navigation]}
-			spaceBetween={10}
-			breakpoints={{
-				320: {
-					slidesPerView: 2,
-				},
-				460: {
-					slidesPerView: 3,
-				},
-				770: {
-					slidesPerView: 4,
-				},
-			}}
-			loop={true}
-			loopAdditionalSlides={4}
-			className="response__swiper">
-			{duplicateSlides.map((product, index) => (
-				<SwiperSlide key={`${product.id}-${index}`}>
-					<div className="menu__card">
-						<div className="menu__wrapper-img">
-							<img
-								src={`http://localhost:3000/${product.img}`}
-								alt={product.name}
-								className="menu__img"
-							/>
+		<>
+			<Swiper
+				modules={[Navigation]}
+				spaceBetween={10}
+				breakpoints={{
+					320: {
+						slidesPerView: 2,
+					},
+					460: {
+						slidesPerView: 3,
+					},
+					770: {
+						slidesPerView: 4,
+					},
+				}}
+				loop={true}
+				loopAdditionalSlides={4}
+				className="response__swiper">
+				{duplicateSlides.map((product, index) => (
+					<SwiperSlide key={`${product.id}-${index}`}>
+						<div className="menu__card">
+							<div className="menu__wrapper-img">
+								<img
+									src={`http://localhost:3000/${product.img}`}
+									alt={product.name}
+									className="menu__img"
+								/>
+							</div>
+							<h3 className="menu__name">{product.name}</h3>
+							<div className="menu__weights">
+								{product.description}
+							</div>
+							<div className="menu__price">{product.price} ₽</div>
+							<button
+								type="button"
+								className="btn menu__btn menu__btn-product"
+								onClick={() => handleOrderClick(product.id)}>
+								Заказать
+							</button>
 						</div>
-						<h3 className="menu__name">{product.name}</h3>
-						<div className="menu__weights">
-							{product.description}
-						</div>
-						<div className="menu__price">{product.price} ₽</div>
-						<button
-							type="button"
-							className="btn menu__btn menu__btn-product"
-							onClick={() => handleOrderClick(product.id)}>
-							Заказать
-						</button>
-					</div>
-				</SwiperSlide>
-			))}
-		</Swiper>
+					</SwiperSlide>
+				))}
+			</Swiper>
+
+			<ModalAdditives
+				productId={selectedProductId}
+				isModalAdditives={isModalAdditives}
+				setIsModalAdditives={setIsModalAdditives}
+			/>
+		</>
 	);
 };
 

@@ -55,10 +55,11 @@ const Cart = () => {
 				) : (
 					<Cards
 						products={products.map(
-							({ product, flavor_additive }) => ({
-								id: `${product.id}-${flavor_additive || "none"}`,
+							({ id, product, additives }) => ({
+								id: `${id}`, // это уникальный id записи корзины
 								name: product.name || "Без названия",
-								description: `Добавки: ${flavor_additive || "Нет"}`,
+								description: product.description || "Нет",
+								additives: additives || "Нет",
 								price: product.price || 0,
 								img: product.img || "default.jpg",
 							}),
@@ -72,7 +73,7 @@ const Cart = () => {
 
 export default Cart;
 
-// Компонент пустой корзины
+//+ Компонент пустой корзины:
 const Empty = () => {
 	return (
 		<div className="basket__null">
