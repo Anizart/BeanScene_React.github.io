@@ -34,3 +34,29 @@ export const addToBasket = async (productId, additives = "Без добавок"
 	console.log(`Товар с ID ${productId} добавлен в корзину`);
 	return response;
 };
+
+export const removeFromBasket = async (productId) => {
+	try {
+		const response = await fetch(`${API_URL}basket`, {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				productId,
+			}),
+			credentials: "include",
+		});
+
+		if (!response.ok) {
+			throw new Error("Ошибка при удалении товара из корзины");
+		}
+
+		const result = await response.json();
+		console.log(result.message);
+		return result;
+	} catch (error) {
+		console.error("Ошибка при удалении товара:", error);
+		return { success: false, message: error.message };
+	}
+};

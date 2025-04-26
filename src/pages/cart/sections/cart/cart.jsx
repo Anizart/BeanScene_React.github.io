@@ -4,7 +4,7 @@ import "./cart.css";
 
 import cart from "@assets/svg/cart.svg";
 import Cards from "./cards/cards";
-import { getBasket } from "@/shared/api/cart";
+import { getBasket, removeFromBasket } from "@/shared/api/cart";
 
 const Cart = () => {
 	const [products, setProducts] = useState([]);
@@ -44,6 +44,24 @@ const Cart = () => {
 		})();
 	}, []);
 
+	//+ Обработчик удаления товара:
+	const handleRemoveFromBasket = async (productId) => {
+		try {
+			const response = await removeFromBasket(productId);
+			if (response.success) {
+				setProducts((prevProducts) =>
+					prevProducts.filter(
+						(product) => product.product.id !== productId,
+					),
+				);
+			} else {
+				console.log("Ошибка при удалении товара:", response.message);
+			}
+		} catch (err) {
+			console.error("Ошибка при удалении товара:", err);
+		}
+	};
+
 	return (
 		<section className="basket">
 			<div className="container">
@@ -64,6 +82,7 @@ const Cart = () => {
 								img: product.img || "default.jpg",
 							}),
 						)}
+						onRemove={handleRemoveFromBasket}
 					/>
 				)}
 			</div>

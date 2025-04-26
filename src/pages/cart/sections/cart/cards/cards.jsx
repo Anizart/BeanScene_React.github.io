@@ -1,7 +1,7 @@
 import React from "react";
 import "./cards.css";
 
-const Cards = ({ products }) => {
+const Cards = ({ products, onRemove }) => {
 	return products.map(({ name, description, additives, price, img, id }) => (
 		<div className="cards__card" key={id}>
 			<img
@@ -13,10 +13,11 @@ const Cards = ({ products }) => {
 			<div className="cards__weights">{description}</div>
 			<div className="cards__weights">Добавки: {additives}</div>
 			<div className="cards__price">{price}$</div>
-			<button className="btn cards__btn-order" id={id}>
-				Order
-			</button>
-			<button type="button" className="btn cards__btn-remove" id={id}>
+			<button className="btn cards__btn-order">Order</button>
+			<button
+				type="button"
+				className="btn cards__btn-remove"
+				onClick={() => onRemove(id)}>
 				Remove 🗑
 			</button>
 		</div>
