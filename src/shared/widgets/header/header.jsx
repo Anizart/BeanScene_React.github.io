@@ -60,7 +60,7 @@ const Header = ({
 				return;
 			}
 
-			navigate("/office");
+			navigate("/cart");
 		} catch (err) {
 			console.error("Ошибка при проверке пользователя:", err);
 			e.preventDefault();
