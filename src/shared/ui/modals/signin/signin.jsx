@@ -22,6 +22,22 @@ const ModalSignIn = ({
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		//+ Проверка Email перед отправкой:
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(formData.email)) {
+			setModalMessage({
+				isOpen: true,
+				message: "Введите корректный email-адрес.",
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+			}, 3000);
+
+			return;
+		}
+
 		try {
 			const res = await login(formData);
 

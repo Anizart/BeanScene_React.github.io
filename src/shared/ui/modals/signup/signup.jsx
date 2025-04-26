@@ -22,6 +22,22 @@ const ModalSignUp = ({
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		//+ Проверка Email перед отправкой, с помощью регулярного выражения:
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!emailRegex.test(formData.email)) {
+			setModalMessage({
+				isOpen: true,
+				message: "Введите корректный email-адрес.",
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+			}, 3000);
+
+			return;
+		}
+
 		try {
 			const data = await regist(formData);
 			setModalMessage({
