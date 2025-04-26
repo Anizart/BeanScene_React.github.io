@@ -5,7 +5,7 @@ import MenuCard from "../../components/menu-card/menu-card";
 import img from "@assets/be-over.png";
 import { getProducts } from "@/shared/api/products";
 
-const Menu = ({ isSignInOpen, setIsSignInOpen }) => {
+const Menu = ({ isSignInOpen, setIsSignInOpen, setModalMessage }) => {
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
@@ -26,6 +26,7 @@ const Menu = ({ isSignInOpen, setIsSignInOpen }) => {
 							products={products}
 							isSignInOpen={isSignInOpen}
 							setIsSignInOpen={setIsSignInOpen}
+							setModalMessage={setModalMessage}
 						/>
 					) : (
 						<Empty />

@@ -13,7 +13,7 @@ const Cards = ({ products, onRemove }) => {
 			<div className="cards__weights">{description}</div>
 			<div className="cards__weights">Добавки: {additives}</div>
 			<div className="cards__price">{price}$</div>
-			<button className="btn cards__btn-order">Order</button>
+			<button className="btn cards__btn-order">Оплатить</button>
 			<button
 				type="button"
 				className="btn cards__btn-remove"

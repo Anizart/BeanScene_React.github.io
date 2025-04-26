@@ -14,6 +14,7 @@ const ModalAdditives = ({
 	productId,
 	isModalAdditives,
 	setIsModalAdditives,
+	setModalMessage,
 }) => {
 	const [selectedAdditives, setSelectedAdditives] = useState([]);
 
@@ -34,12 +35,32 @@ const ModalAdditives = ({
 					? selectedAdditives.join(", ")
 					: "Без добавок";
 
-			await addToBasket(productId, additivesStr);
+			const res = await addToBasket(productId, additivesStr);
 
-			console.log("Заказ отправлен!");
+			const data = await res.json();
+
+			setModalMessage({
+				isOpen: true,
+				message: data.message,
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+			}, 3000);
+
 			setIsModalAdditives(!isModalAdditives);
 		} catch (err) {
 			console.error("Ошибка при отправке заказа:", err);
+			setModalMessage({
+				isOpen: true,
+				message:
+					err.message ||
+					"Ошибка регистрации. Пожалуйста, попробуйте снова.",
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+			}, 3000);
 		}
 	};
 

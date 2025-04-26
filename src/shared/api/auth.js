@@ -61,15 +61,3 @@ export const checkAuth = async () => {
 		return null;
 	}
 };
-
-export const logout = async () => {
-	try {
-		const res = await fetch(`${API_URL}auth/logout`, {
-			credentials: "include",
-		});
-
-		if (!res.ok) throw new Error("Не удалось выйти");
-	} catch (err) {
-		console.error("Ошибка выхода", err);
-	}
-};

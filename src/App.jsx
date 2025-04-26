@@ -10,7 +10,7 @@ import Footer from "./shared/widgets/footer/footer";
 import ModalSearch from "./shared/ui/modals/search/search";
 import ModalSignIn from "./shared/ui/modals/signin/signin";
 import ModalSignUp from "./shared/ui/modals/signup/signup";
-import ModalСonfirmation from "./shared/ui/modals/confirmation/confirmation";
+import ModalConfirmation from "./shared/ui/modals/confirmation/confirmation";
 import ModalEdit from "./shared/ui/modals/edit/modal-edit";
 import ModalMessage from "./shared/ui/modals/message/message";
 
@@ -30,7 +30,7 @@ const App = () => {
 	const [isSignUpOpen, setIsSignUpOpen] = useState(false);
 	const [isSignInOpen, setIsSignInOpen] = useState(false);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
-	const [isСonfirmation, setIsСonfirmation] = useState(false);
+	const [isConfirmation, setIsConfirmation] = useState(false);
 	const [isModalEdit, setIsModalEdit] = useState(false);
 	const [isModalMessage, setModalMessage] = useState({
 		isOpen: false,
@@ -55,8 +55,8 @@ const App = () => {
 	}, [isSearchOpen]);
 
 	useEffect(() => {
-		document.body.classList.toggle("hidden", isСonfirmation);
-	}, [isСonfirmation]);
+		document.body.classList.toggle("hidden", isConfirmation);
+	}, [isConfirmation]);
 
 	useEffect(() => {
 		document.body.classList.toggle("hidden", isModalEdit);
@@ -84,6 +84,7 @@ const App = () => {
 							<IndexPage
 								isSignInOpen={isSignInOpen}
 								setIsSignInOpen={setIsSignInOpen}
+								setModalMessage={setModalMessage}
 							/>
 						}
 					/>
@@ -91,9 +92,9 @@ const App = () => {
 						path="/office"
 						element={
 							<Office
-								isСonfirmation={isСonfirmation}
+								isConfirmation={isConfirmation}
 								isModalEdit={isModalEdit}
-								setIsСonfirmation={setIsСonfirmation}
+								setIsConfirmation={setIsConfirmation}
 								setIsModalEdit={setIsModalEdit}
 							/>
 						}
@@ -114,6 +115,7 @@ const App = () => {
 					setIsSignInOpen(false);
 					setIsSignUpOpen(true);
 				}}
+				setModalMessage={setModalMessage}
 			/>
 			<ModalSignUp
 				setIsSignUpOpen={setIsSignUpOpen}
@@ -124,18 +126,19 @@ const App = () => {
 				}}
 				setModalMessage={setModalMessage}
 			/>
-			<ModalСonfirmation
-				isСonfirmation={isСonfirmation}
-				setIsСonfirmation={setIsСonfirmation}
+			<ModalConfirmation
+				isConfirmation={isConfirmation}
+				setIsConfirmation={setIsConfirmation}
+				setModalMessage={setModalMessage}
 			/>
 			<ModalEdit
 				isModalEdit={isModalEdit}
 				setIsModalEdit={setIsModalEdit}
+				setModalMessage={setModalMessage}
 			/>
 			<ModalMessage
 				isOpen={isModalMessage.isOpen}
 				message={isModalMessage.message}
-				modalMessage={isModalMessage}
 			/>
 		</div>
 	);

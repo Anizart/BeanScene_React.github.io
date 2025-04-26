@@ -3,7 +3,11 @@ import { createPortal } from "react-dom";
 import { API_URL } from "@/shared/api/products";
 import "./confirmation.css";
 
-const ModalСonfirmation = ({ isСonfirmation, setIsСonfirmation }) => {
+const ModalConfirmation = ({
+	isConfirmation,
+	setIsConfirmation,
+	setModalMessage,
+}) => {
 	const navigate = useNavigate();
 
 	const handleLogout = async () => {
@@ -14,22 +18,41 @@ const ModalСonfirmation = ({ isСonfirmation, setIsСonfirmation }) => {
 			});
 
 			if (res.ok) {
-				setIsСonfirmation(false);
-				navigate("/"); // редирект на главную
+				const data = await res.json();
+				setIsConfirmation(false);
+
+				setModalMessage({
+					isOpen: true,
+					message: data.message,
+				});
+
+				setTimeout(() => {
+					setModalMessage({ isOpen: false, message: "" });
+					navigate("/"); // редирект на главную
+				}, 3000);
 			} else {
 				console.error("Не удалось выйти");
 			}
-		} catch (error) {
-			console.error("Ошибка при выходе:", error);
+		} catch (err) {
+			console.error("Ошибка при выходе:", err);
+
+			setModalMessage({
+				isOpen: true,
+				message: err.message,
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+			}, 3000);
 		}
 	};
 
-	if (!isСonfirmation) return null;
+	if (!isConfirmation) return null;
 
 	const modalContent = (
 		<div
-			className={`modal modal-question ${isСonfirmation ? "modal-area-active" : ""}`}
-			onClick={() => setIsСonfirmation(!isСonfirmation)}>
+			className={`modal modal-question ${isConfirmation ? "modal-area-active" : ""}`}
+			onClick={() => setIsConfirmation(!isConfirmation)}>
 			<div
 				className="modal__wrapper"
 				onClick={(e) => e.stopPropagation()}>
@@ -38,7 +61,7 @@ const ModalСonfirmation = ({ isСonfirmation, setIsСonfirmation }) => {
 					<button
 						type="button"
 						className="btn modal__btn"
-						onClick={() => setIsСonfirmation(!isСonfirmation)}>
+						onClick={() => setIsConfirmation(!isConfirmation)}>
 						Нет
 					</button>
 					<button
@@ -54,4 +77,4 @@ const ModalСonfirmation = ({ isСonfirmation, setIsСonfirmation }) => {
 
 	return createPortal(modalContent, document.getElementById("modal-root"));
 };
-export default ModalСonfirmation;
+export default ModalConfirmation;

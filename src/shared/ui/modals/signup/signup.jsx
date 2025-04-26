@@ -23,11 +23,12 @@ const ModalSignUp = ({
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			const res = await regist(formData);
+			const data = await regist(formData);
 			setModalMessage({
 				isOpen: true,
-				message: res.message || "Успешная регистрация!",
+				message: data.message || "Успешная регистрация!",
 			});
+
 			setTimeout(() => {
 				setModalMessage({ isOpen: false, message: "" });
 			}, 3000);
@@ -35,7 +36,18 @@ const ModalSignUp = ({
 			setIsSignUpOpen(!isSignUpOpen);
 		} catch (err) {
 			console.error("Ошибка регистрации (фронт)", err);
-			//! модалка
+			setModalMessage({
+				isOpen: true,
+				message:
+					err.message ||
+					"Ошибка регистрации. Пожалуйста, попробуйте снова.",
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+			}, 3000);
+
+			setIsSignUpOpen(!isSignUpOpen);
 		}
 	};
 

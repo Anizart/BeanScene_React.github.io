@@ -7,7 +7,7 @@ import Demonstration from "./demonstration/demonstration";
 import Response from "./response/response";
 import Subscribe from "./subscribe/subscribe";
 
-const IndexPage = ({ isSignInOpen, setIsSignInOpen }) => {
+const IndexPage = ({ isSignInOpen, setIsSignInOpen, setModalMessage }) => {
 	return (
 		<>
 			<Welcome />
@@ -15,6 +15,7 @@ const IndexPage = ({ isSignInOpen, setIsSignInOpen }) => {
 			<Menu
 				isSignInOpen={isSignInOpen}
 				setIsSignInOpen={setIsSignInOpen}
+				setModalMessage={setModalMessage}
 			/>
 			<Priorities />
 			<Chance />

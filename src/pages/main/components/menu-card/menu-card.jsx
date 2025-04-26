@@ -4,7 +4,12 @@ import { Navigation } from "swiper/modules";
 import { checkAuth } from "@/shared/api/auth";
 import ModalAdditives from "@/shared/ui/modals/additives/additives";
 
-const MenuCard = ({ products, isSignInOpen, setIsSignInOpen }) => {
+const MenuCard = ({
+	products,
+	isSignInOpen,
+	setIsSignInOpen,
+	setModalMessage,
+}) => {
 	const [isModalAdditives, setIsModalAdditives] = useState(false);
 	const [selectedProductId, setSelectedProductId] = useState(null);
 
@@ -89,6 +94,7 @@ const MenuCard = ({ products, isSignInOpen, setIsSignInOpen }) => {
 				productId={selectedProductId}
 				isModalAdditives={isModalAdditives}
 				setIsModalAdditives={setIsModalAdditives}
+				setModalMessage={setModalMessage}
 			/>
 		</>
 	);

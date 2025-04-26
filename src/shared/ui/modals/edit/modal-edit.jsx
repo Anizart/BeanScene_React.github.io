@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 
 import { updateUserProfile } from "@/shared/api/user";
 
-const ModalEdit = ({ isModalEdit, setIsModalEdit }) => {
+const ModalEdit = ({ isModalEdit, setIsModalEdit, setModalMessage }) => {
 	const [formData, setFormData] = useState({
 		name: "",
 		address: "",
@@ -18,13 +18,29 @@ const ModalEdit = ({ isModalEdit, setIsModalEdit }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
-			await updateUserProfile(formData);
-			alert("Профиль обновлён!");
-			window.location.reload(); // Обновление страницы
+			const res = await updateUserProfile(formData);
+
+			setModalMessage({
+				isOpen: true,
+				message: res.message,
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+				window.location.reload(); // Обновление страницы
+			}, 3000);
+
 			setIsModalEdit(false);
-		} catch (error) {
-			console.error("Ошибка:", error);
-			alert("Не удалось обновить профиль.");
+		} catch (err) {
+			console.error("Ошибка:", err);
+			setModalMessage({
+				isOpen: true,
+				message: err.message,
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+			}, 3000);
 		}
 	};
 

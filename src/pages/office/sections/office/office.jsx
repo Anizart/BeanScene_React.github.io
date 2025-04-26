@@ -3,9 +3,9 @@ import { API_URL } from "@/shared/api/products";
 import "./office.css";
 
 const Office = ({
-	isСonfirmation,
+	isConfirmation,
 	isModalEdit,
-	setIsСonfirmation,
+	setIsConfirmation,
 	setIsModalEdit,
 }) => {
 	const [userData, setUserData] = useState({
@@ -81,7 +81,7 @@ const Office = ({
 					<button
 						type="button"
 						className="btn btn-exit"
-						onClick={() => setIsСonfirmation(!isСonfirmation)}>
+						onClick={() => setIsConfirmation(!isConfirmation)}>
 						Выйти
 					</button>
 				</div>

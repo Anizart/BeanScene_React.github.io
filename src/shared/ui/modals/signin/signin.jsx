@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 import { login } from "@/shared/api/auth";
 
-const ModalSignIn = ({ isSignInOpen, setIsSignInOpen, onSwitchToSignIn }) => {
+const ModalSignIn = ({
+	isSignInOpen,
+	setIsSignInOpen,
+	onSwitchToSignIn,
+	setModalMessage,
+}) => {
 	const navigate = useNavigate();
 
 	const [formData, setFormData] = useState({
@@ -19,13 +24,30 @@ const ModalSignIn = ({ isSignInOpen, setIsSignInOpen, onSwitchToSignIn }) => {
 		e.preventDefault();
 		try {
 			const res = await login(formData);
-			//! модалка
-			console.log(res);
+
+			setModalMessage({
+				isOpen: true,
+				message: res.message,
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+			}, 3000);
+
 			navigate("/office");
 			setIsSignInOpen(!isSignInOpen);
 		} catch (err) {
 			console.error("Ошибка авторизации (фронт)", err);
-			//! модалка
+			setModalMessage({
+				isOpen: true,
+				message: err.message,
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+			}, 3000);
+
+			setIsSignInOpen(!isSignInOpen);
 		}
 	};
 

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./header.css";
 
 import Nav from "./header-nav/header-nav";
@@ -6,6 +7,7 @@ import logo from "@assets/svg/logo.svg";
 import cart from "@assets/svg/basket.svg";
 import search from "@assets/svg/header_search.svg";
 import { Link } from "react-router";
+import { checkAuth } from "@/shared/api/auth";
 
 const Header = ({
 	isBurgerOpen,
@@ -19,6 +21,8 @@ const Header = ({
 	setIsSignInOpen,
 	setIsSearchOpen,
 }) => {
+	const navigate = useNavigate();
+
 	useEffect(() => {
 		const header = document.querySelector(".header");
 		if (!header) return;
@@ -39,6 +43,29 @@ const Header = ({
 			window.removeEventListener("scroll", handleScroll);
 		};
 	}, []);
+
+	const handleOfficeClick = async (e) => {
+		e.preventDefault();
+
+		try {
+			const user = await checkAuth();
+
+			if (!user) {
+				console.log("Пользователь не авторизован");
+
+				if (typeof setIsSignInOpen === "function") {
+					setIsSignInOpen(!isSignInOpen);
+				}
+
+				return;
+			}
+
+			navigate("/office");
+		} catch (err) {
+			console.error("Ошибка при проверке пользователя:", err);
+			e.preventDefault();
+		}
+	};
 
 	return (
 		<header className="header">
@@ -72,6 +99,7 @@ const Header = ({
 									src={cart}
 									alt="корзина"
 									className="header__basket"
+									onClick={handleOfficeClick}
 								/>
 							</Link>
 							<button
