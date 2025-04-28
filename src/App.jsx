@@ -15,7 +15,6 @@ import ModalEdit from "./shared/ui/modals/edit/modal-edit";
 import ModalMessage from "./shared/ui/modals/message/message";
 
 const App = () => {
-	//+ header:
 	const [mode, onToggleMode] = useState(() => {
 		const saved = localStorage.getItem("mode");
 		if (saved === null) {

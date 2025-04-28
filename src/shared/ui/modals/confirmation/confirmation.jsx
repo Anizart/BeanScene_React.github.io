@@ -29,6 +29,7 @@ const ModalConfirmation = ({
 				setTimeout(() => {
 					setModalMessage({ isOpen: false, message: "" });
 					navigate("/"); // редирект на главную
+					window.location.reload();
 				}, 3000);
 			} else {
 				console.error("Не удалось выйти");

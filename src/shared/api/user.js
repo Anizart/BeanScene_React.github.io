@@ -1,5 +1,27 @@
 import { API_URL } from "./products";
 
+export const userProfile = async () => {
+	try {
+		const response = await fetch(`${API_URL}user`, {
+			method: "GET",
+			credentials: "include",
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		if (!response.ok) {
+			throw new Error("Не удалось получить данные пользователя");
+		}
+
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.error("Ошибка в userProfile запросе:", error);
+		throw error;
+	}
+};
+
 export const updateUserProfile = async (formData) => {
 	const res = await fetch(`${API_URL}user`, {
 		method: "PUT",

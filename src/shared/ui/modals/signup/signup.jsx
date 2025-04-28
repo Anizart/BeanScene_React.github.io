@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
+import { useNavigate } from "react-router";
 
 import { regist } from "@/shared/api/auth";
 
@@ -9,6 +10,8 @@ const ModalSignUp = ({
 	onSwitchToSignIn,
 	setModalMessage,
 }) => {
+	const navigate = useNavigate();
+
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -63,6 +66,8 @@ const ModalSignUp = ({
 				setModalMessage({ isOpen: false, message: "" });
 			}, 3000);
 
+			navigate("/office");
+			window.location.reload();
 			setIsSignUpOpen(!isSignUpOpen);
 		}
 	};

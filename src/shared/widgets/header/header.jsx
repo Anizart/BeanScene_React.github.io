@@ -8,6 +8,7 @@ import cart from "@assets/svg/basket.svg";
 import search from "@assets/svg/header_search.svg";
 import { Link } from "react-router";
 import { checkAuth } from "@/shared/api/auth";
+import { userProfile } from "@/shared/api/user";
 
 const Header = ({
 	isBurgerOpen,
@@ -21,6 +22,8 @@ const Header = ({
 	setIsSignInOpen,
 	setIsSearchOpen,
 }) => {
+	const [userName, setUserName] = React.useState("");
+
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -37,6 +40,22 @@ const Header = ({
 		};
 
 		window.addEventListener("scroll", handleScroll);
+
+		const fetchUserProfile = async () => {
+			try {
+				const response = await userProfile();
+				if (response?.name) {
+					setUserName(response.name);
+				}
+			} catch (error) {
+				console.error(
+					"Ошибка при получении профиля пользователя:",
+					error,
+				);
+			}
+		};
+
+		fetchUserProfile();
 
 		// Очистка при размонтировании
 		return () => {
@@ -112,18 +131,30 @@ const Header = ({
 									className="header__search"
 								/>
 							</button>
-							<button
-								type="button"
-								className="header__sign-in"
-								onClick={() => setIsSignInOpen(!isSignInOpen)}>
-								Войти
-							</button>
-							<button
-								type="button"
-								className="btn header__sing-up"
-								onClick={() => setIsSignUpOpen(!isSignUpOpen)}>
-								Регистрация
-							</button>
+							{userName ? (
+								<span className="header__user-name">
+									Здравствуйте, {userName}!
+								</span>
+							) : (
+								<>
+									<button
+										type="button"
+										className="header__sign-in"
+										onClick={() =>
+											setIsSignInOpen(!isSignInOpen)
+										}>
+										Войти
+									</button>
+									<button
+										type="button"
+										className="btn header__sing-up"
+										onClick={() =>
+											setIsSignUpOpen(!isSignUpOpen)
+										}>
+										Регистрация
+									</button>
+								</>
+							)}
 						</div>
 					</div>
 					<span
