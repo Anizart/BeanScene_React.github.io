@@ -92,8 +92,8 @@ const Priorities = () => {
 				<div className="subtitle priorities__subtitle">
 					Начните уже сегодня.
 				</div>
-				<a href="#" className="btn priorities__btn">
-					Присоединиться
+				<a href="#menu" className="btn priorities__btn">
+					Начать
 				</a>
 			</div>
 		</section>

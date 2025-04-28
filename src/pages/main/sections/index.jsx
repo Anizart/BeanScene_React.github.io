@@ -21,7 +21,7 @@ const IndexPage = ({ isSignInOpen, setIsSignInOpen, setModalMessage }) => {
 			<Chance />
 			<Demonstration />
 			<Response />
-			<Subscribe />
+			<Subscribe setModalMessage={setModalMessage} />
 		</>
 	);
 };
