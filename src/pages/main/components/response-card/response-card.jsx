@@ -1,9 +1,38 @@
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import default_image from "@assets/commentator.png";
 
-import user from "@assets/commentator.png";
+import { fetchReviews } from "@/shared/api/reviews";
 
 const ResponseSlider = () => {
+	const [reviews, setReviews] = useState([]); // Состояние для хранения отзывов
+	const [loading, setLoading] = useState(true); // Состояние для индикации загрузки
+	const [error, setError] = useState(null); // Состояние для ошибок
+
+	useEffect(() => {
+		const loadReviews = async () => {
+			try {
+				const reviewsData = await fetchReviews();
+				setReviews(reviewsData);
+			} catch (err) {
+				setError("Не удалось загрузить отзывы", err);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		loadReviews();
+	}, []);
+
+	if (loading) {
+		return <div>Загрузка отзывов...</div>;
+	}
+
+	if (error) {
+		return <div>{error}</div>;
+	}
+
 	return (
 		<Swiper
 			modules={[Navigation]}
@@ -15,31 +44,31 @@ const ResponseSlider = () => {
 				prevEl: ".response__rewind-left",
 			}}
 			className="response__swiper">
-			{[1, 2, 3, 4].map((_, i) => (
-				<SwiperSlide key={i}>
-					<div className="response__wrapper col-10">
-						<div className="response__quotation-marks">“</div>
-						<div className="response__comment">
-							Кофе здесь — это настоящее искусство! Каждый глоток
-							— как вдохновение для работы. Рекомендую всем, кто
-							ценит настоящий вкус и высокое качество.
+			{reviews.length === 0 ? (
+				<div>Отзывов нет</div>
+			) : (
+				reviews.map((review) => (
+					<SwiperSlide key={review.id}>
+						<div className="response__wrapper col-10">
+							<div className="response__quotation-marks">“</div>
+							<div className="response__comment">
+								{review.feedback}
+							</div>
+							<div className="subtitle response__subtitle">
+								{review.name}
+							</div>
+							<div className="response__profession">Клиент</div>
+							<div className="response__wrapper-img">
+								<img
+									src={default_image}
+									alt={review.name}
+									className="response__img"
+								/>
+							</div>
 						</div>
-						<div className="subtitle response__subtitle">
-							Джонни Томас
-						</div>
-						<div className="response__profession">
-							Руководитель проекта
-						</div>
-						<div className="response__wrapper-img">
-							<img
-								src={user}
-								alt="commentator"
-								className="response__img"
-							/>
-						</div>
-					</div>
-				</SwiperSlide>
-			))}
+					</SwiperSlide>
+				))
+			)}
 		</Swiper>
 	);
 };
