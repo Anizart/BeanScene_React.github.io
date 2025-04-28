@@ -3,11 +3,14 @@ import { createPortal } from "react-dom";
 import "./additives.css";
 
 import { addToBasket } from "@/shared/api/cart";
+import coconut from "@/assets/coconut.png";
+import banana from "@/assets/banana.png";
+import sugar from "@/assets/sugar.png";
 
 const additivesList = [
-	{ name: "Кокос", img: "/react-app/src/assets/coconut.png" },
-	{ name: "Банан", img: "/react-app/src/assets/banana.png" },
-	{ name: "Сахар", img: "/react-app/src/assets/sugar.png" },
+	{ name: "Кокос", img: `${coconut}` },
+	{ name: "Банан", img: `${banana}` },
+	{ name: "Сахар", img: `${sugar}` },
 ];
 
 const ModalAdditives = ({
