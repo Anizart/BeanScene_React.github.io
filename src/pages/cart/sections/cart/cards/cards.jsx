@@ -18,7 +18,7 @@ const Cards = ({ products, onRemove }) => {
 				type="button"
 				className="btn cards__btn-remove"
 				onClick={() => onRemove(id)}>
-				Remove 🗑
+				Удалить 🗑
 			</button>
 		</div>
 	));
