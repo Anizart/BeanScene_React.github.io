@@ -1,5 +1,6 @@
 .modal__wrapper-additives {
 	width: 100%;
+	overflow-x: hidden !important;
 	max-width: clamp(200px, 90vw, 1000px);
 }
 .modal__wrapper-elements {

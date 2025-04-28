@@ -105,7 +105,10 @@ const App = () => {
 			<Footer />
 			<ModalSearch
 				isSearchOpen={isSearchOpen}
+				isSignInOpen={isSignInOpen}
 				setIsSearchOpen={setIsSearchOpen}
+				setIsSignInOpen={setIsSignInOpen}
+				setModalMessage={setModalMessage}
 			/>
 			<ModalSignIn
 				isSignInOpen={isSignInOpen}

@@ -13,3 +13,27 @@ export async function getProducts() {
 		return [];
 	}
 }
+
+export const searchProducts = async (query) => {
+	try {
+		const response = await fetch(
+			`${API_URL}products?query=${encodeURIComponent(query)}`,
+			{
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				credentials: "include",
+			},
+		);
+
+		if (!response.ok) {
+			throw new Error("Ошибка при поиске продуктов");
+		}
+
+		return await response.json();
+	} catch (error) {
+		console.error("Ошибка в searchProducts:", error);
+		return [];
+	}
+};

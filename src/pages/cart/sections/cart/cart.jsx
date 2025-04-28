@@ -71,19 +71,24 @@ const Cart = () => {
 				) : products.length === 0 ? (
 					<Empty />
 				) : (
-					<Cards
-						products={products.map(
-							({ id, product, additives }) => ({
-								id: `${id}`, // это уникальный id записи корзины
-								name: product.name || "Без названия",
-								description: product.description || "Нет",
-								additives: additives || "Нет",
-								price: product.price || 0,
-								img: product.img || "default.jpg",
-							}),
-						)}
-						onRemove={handleRemoveFromBasket}
-					/>
+					<>
+						<button type="button" className="btn btn-all">
+							Оплатить всё
+						</button>
+						<Cards
+							products={products.map(
+								({ id, product, additives }) => ({
+									id: `${id}`, // это уникальный id записи корзины
+									name: product.name || "Без названия",
+									description: product.description || "Нет",
+									additives: additives || "Нет",
+									price: product.price || 0,
+									img: product.img || "default.jpg",
+								}),
+							)}
+							onRemove={handleRemoveFromBasket}
+						/>
+					</>
 				)}
 			</div>
 		</section>
