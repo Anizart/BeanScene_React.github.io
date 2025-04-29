@@ -8,7 +8,7 @@ import card4 from "@assets/svg/section_4_card_4.svg";
 
 const Priorities = () => {
 	return (
-		<section className="section priorities">
+		<section className="section priorities" id="prioritiesпш">
 			<div className="img-bg priorities__wrapper-img-splash">
 				<img
 					src={splash}

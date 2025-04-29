@@ -76,12 +76,14 @@ const Footer = () => {
 						<nav className="footer__nav">
 							<ul className="footer__menu">
 								<li className="footer__item">
-									<a href="#" className="footer__link">
+									<a href="#menu" className="footer__link">
 										Меню
 									</a>
 								</li>
 								<li className="footer__item">
-									<a href="#" className="footer__link">
+									<a
+										href="#priorities"
+										className="footer__link">
 										Особенности
 									</a>
 								</li>
@@ -107,7 +109,7 @@ const Footer = () => {
 							<a href="#" className="footer__link">
 								Условия обслуживания
 							</a>
-							<a href="#" className="footer__link">
+							<a href="#menu" className="footer__link">
 								Цены
 							</a>
 							<a href="#" className="footer__link">
@@ -121,14 +123,16 @@ const Footer = () => {
 							<a href="#" className="footer__link">
 								Москва, ул. Тверская, д. 7, офис 15
 							</a>
-							<a href="tel:+12029182132" className="footer__link">
-								+7 800-123-45-67
+							<a href="tel:+78001234567" className="footer__link">
+								+7 800-123-45-67 ( по всем вопросам )
 							</a>
-							<a href="#" className="footer__link">
-								beanscene@gmail.com
+							<a href="tel:+78002344569" className="footer__link">
+								+7 800-234-45-69 ( для предложений )
 							</a>
-							<a href="#" className="footer__link">
-								www.beanscene.com
+							<a
+								href="mailto:coffeehousebeanscene@gmail.com"
+								className="footer__link">
+								coffeehousebeanscene@gmail.com
 							</a>
 						</div>
 					</div>

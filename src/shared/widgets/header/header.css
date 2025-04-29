@@ -59,6 +59,9 @@
 			width: 100%;
 		}
 	}
+	.header__user-name {
+		color: #fff;
+	}
 	.header__link {
 		color: var(--light-color);
 	}
