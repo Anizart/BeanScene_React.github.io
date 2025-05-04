@@ -48,10 +48,10 @@ const ModalSignIn = ({
 
 			setTimeout(() => {
 				setModalMessage({ isOpen: false, message: "" });
+				navigate("/office");
+				window.location.reload();
 			}, 3000);
 
-			navigate("/office");
-			window.location.reload();
 			setIsSignInOpen(!isSignInOpen);
 		} catch (err) {
 			console.error("Ошибка авторизации (фронт)", err);

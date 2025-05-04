@@ -50,10 +50,10 @@ const ModalSignUp = ({
 
 			setTimeout(() => {
 				setModalMessage({ isOpen: false, message: "" });
+				navigate("/office");
+				window.location.reload();
 			}, 3000);
 
-			navigate("/office");
-			window.location.reload();
 			setIsSignUpOpen(!isSignUpOpen);
 		} catch (err) {
 			console.error("Ошибка регистрации (фронт)", err);
