@@ -52,6 +52,8 @@ const ModalSignUp = ({
 				setModalMessage({ isOpen: false, message: "" });
 			}, 3000);
 
+			navigate("/office");
+			window.location.reload();
 			setIsSignUpOpen(!isSignUpOpen);
 		} catch (err) {
 			console.error("Ошибка регистрации (фронт)", err);
@@ -65,10 +67,6 @@ const ModalSignUp = ({
 			setTimeout(() => {
 				setModalMessage({ isOpen: false, message: "" });
 			}, 3000);
-
-			navigate("/office");
-			window.location.reload();
-			setIsSignUpOpen(!isSignUpOpen);
 		}
 	};
 
