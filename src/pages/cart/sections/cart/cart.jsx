@@ -6,8 +6,12 @@ import cart from "@assets/svg/cart.svg";
 import Cards from "./cards/cards";
 import { getBasket, removeFromBasket } from "@/shared/api/cart";
 
-const Cart = () => {
-	const [products, setProducts] = useState([]);
+const Cart = ({
+	isModalCorrection,
+	cartProducts,
+	setIsModalCorrection,
+	setCartProducts,
+}) => {
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -35,7 +39,7 @@ const Cart = () => {
 						item.product.price,
 				);
 
-				setProducts(validData);
+				setCartProducts(validData);
 			} catch (err) {
 				console.error("Ошибка при загрузке корзины", err);
 			} finally {
@@ -49,7 +53,7 @@ const Cart = () => {
 		try {
 			const response = await removeFromBasket(productId);
 			if (response.success) {
-				setProducts((prevProducts) =>
+				setCartProducts((prevProducts) =>
 					prevProducts.filter(
 						(product) => product.product.id !== productId,
 					),
@@ -68,15 +72,20 @@ const Cart = () => {
 				<h1 className="title title-shopping">Корзина покупок</h1>
 				{isLoading ? (
 					<p>Загрузка...</p>
-				) : products.length === 0 ? (
+				) : cartProducts.length === 0 ? (
 					<Empty />
 				) : (
 					<>
-						<button type="button" className="btn btn-all">
+						<button
+							type="button"
+							className="btn btn-all"
+							onClick={() =>
+								setIsModalCorrection(!isModalCorrection)
+							}>
 							Оплатить всё
 						</button>
 						<Cards
-							products={products.map(
+							products={cartProducts.map(
 								({ id, product, additives }) => ({
 									id: `${id}`, // это уникальный id записи корзины
 									name: product.name || "Без названия",

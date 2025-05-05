@@ -97,7 +97,6 @@ const ModalSignUp = ({
 						id="name"
 						className="modal__input"
 						onChange={handleChange}
-						tabIndex="1"
 						required
 					/>
 				</div>
@@ -111,7 +110,6 @@ const ModalSignUp = ({
 						id="email"
 						className="modal__input"
 						onChange={handleChange}
-						tabIndex="2"
 						required
 					/>
 				</div>
@@ -126,7 +124,6 @@ const ModalSignUp = ({
 						id="address"
 						className="modal__input"
 						onChange={handleChange}
-						tabIndex="3"
 						required
 					/>
 					<datalist id="cities">
@@ -148,11 +145,10 @@ const ModalSignUp = ({
 						id="password"
 						className="modal__input"
 						onChange={handleChange}
-						tabIndex="4"
 						required
 					/>
 				</div>
-				<button type="submit" className="btn modal__btn" tabIndex="5">
+				<button type="submit" className="btn modal__btn">
 					Отправить
 				</button>
 				<button

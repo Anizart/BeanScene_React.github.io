@@ -12,6 +12,7 @@ import ModalSignIn from "./shared/ui/modals/signin/signin";
 import ModalSignUp from "./shared/ui/modals/signup/signup";
 import ModalConfirmation from "./shared/ui/modals/confirmation/confirmation";
 import ModalEdit from "./shared/ui/modals/edit/modal-edit";
+import ModalCorrection from "./shared/ui/modals/payment/payment";
 import ModalMessage from "./shared/ui/modals/message/message";
 
 const App = () => {
@@ -31,10 +32,13 @@ const App = () => {
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const [isConfirmation, setIsConfirmation] = useState(false);
 	const [isModalEdit, setIsModalEdit] = useState(false);
+	const [isModalCorrection, setIsModalCorrection] = useState(false);
 	const [isModalMessage, setModalMessage] = useState({
 		isOpen: false,
 		message: "",
 	});
+
+	const [cartProducts, setCartProducts] = useState([]);
 
 	useEffect(() => {
 		document.body.classList.toggle("hidden", isBurgerOpen);
@@ -60,6 +64,10 @@ const App = () => {
 	useEffect(() => {
 		document.body.classList.toggle("hidden", isModalEdit);
 	}, [isModalEdit]);
+
+	useEffect(() => {
+		document.body.classList.toggle("hidden", isModalCorrection);
+	}, [isModalCorrection]);
 
 	return (
 		<div className="wrapper">
@@ -98,7 +106,17 @@ const App = () => {
 							/>
 						}
 					/>
-					<Route path="/cart" element={<Cart />} />
+					<Route
+						path="/cart"
+						element={
+							<Cart
+								isModalCorrection={isModalCorrection}
+								cartProducts={cartProducts}
+								setIsModalCorrection={setIsModalCorrection}
+								setCartProducts={setCartProducts}
+							/>
+						}
+					/>
 					<Route path="*" element={<NotfoundPage />} />
 				</Routes>
 			</main>
@@ -137,6 +155,11 @@ const App = () => {
 				isModalEdit={isModalEdit}
 				setIsModalEdit={setIsModalEdit}
 				setModalMessage={setModalMessage}
+			/>
+			<ModalCorrection
+				isModalCorrection={isModalCorrection}
+				products={cartProducts}
+				setIsModalCorrection={setIsModalCorrection}
 			/>
 			<ModalMessage
 				isOpen={isModalMessage.isOpen}

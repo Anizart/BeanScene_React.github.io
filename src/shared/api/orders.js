@@ -21,3 +21,22 @@ export const getOrdersToday = async () => {
 		return 0;
 	}
 };
+
+export const createOrders = async (ordersData) => {
+	try {
+		const response = await fetch(`${API_URL}orders`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			credentials: "include",
+			body: JSON.stringify(ordersData),
+		});
+
+		const result = await response.json();
+		return result;
+	} catch (err) {
+		console.error("Ошибка при создании заказов:", err);
+		throw err;
+	}
+};
