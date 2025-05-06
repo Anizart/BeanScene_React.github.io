@@ -103,7 +103,7 @@ const ModalSignIn = ({
 						Пароль
 					</label>
 					<input
-						type="text"
+						type="password"
 						name="password"
 						id="password-authorization"
 						className="modal__input"
@@ -115,12 +115,9 @@ const ModalSignIn = ({
 				<button type="submit" className="btn modal__btn" tabIndex="3">
 					Отправить
 				</button>
-				<div className="modal__wrapper-link">
-					<button onClick={onSwitchToSignIn} className="modal__link">
-						новая учетная запись
-					</button>
-					<button className="modal__link">забыли пароль?</button>
-				</div>
+				<button onClick={onSwitchToSignIn} className="modal__link">
+					новая учетная запись
+				</button>
 			</form>
 		</div>
 	);

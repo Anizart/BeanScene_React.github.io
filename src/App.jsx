@@ -160,6 +160,7 @@ const App = () => {
 				isModalCorrection={isModalCorrection}
 				products={cartProducts}
 				setIsModalCorrection={setIsModalCorrection}
+				setModalMessage={setModalMessage}
 			/>
 			<ModalMessage
 				isOpen={isModalMessage.isOpen}

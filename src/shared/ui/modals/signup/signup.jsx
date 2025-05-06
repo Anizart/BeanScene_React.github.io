@@ -140,7 +140,7 @@ const ModalSignUp = ({
 						Пароль
 					</label>
 					<input
-						type="text"
+						type="password"
 						name="password"
 						id="password"
 						className="modal__input"

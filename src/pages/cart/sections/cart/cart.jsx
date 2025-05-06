@@ -58,8 +58,7 @@ const Cart = ({
 						(product) => product.product.id !== productId,
 					),
 				);
-			} else {
-				console.log("Ошибка при удалении товара:", response.message);
+				return;
 			}
 		} catch (err) {
 			console.error("Ошибка при удалении товара:", err);

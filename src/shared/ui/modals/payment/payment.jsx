@@ -6,6 +6,7 @@ import { createOrders } from "@/shared/api/orders";
 const ModalCorrection = ({
 	isModalCorrection,
 	setIsModalCorrection,
+	setModalMessage,
 	products,
 }) => {
 	const [time, setTime] = useState("");
@@ -24,24 +25,38 @@ const ModalCorrection = ({
 		e.preventDefault();
 
 		if (!time || products.length === 0) {
-			alert("Заполните время и убедитесь, что корзина не пуста.");
+			setModalMessage({
+				isOpen: true,
+				message: "Заполните время и убедитесь, что корзина не пуста.",
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+			}, 3000);
 			return;
 		}
 
 		const ordersData = {
 			time,
 			products: products.map((p) => ({
-				id_product: p.id,
+				id_basket: p.id,
 				additives: p.additives,
 			})),
 		};
 
 		try {
 			const response = await createOrders(ordersData);
-			alert(response.message || "Заказы успешно созданы!");
+			setModalMessage({
+				isOpen: true,
+				message: response.message,
+			});
+
+			setTimeout(() => {
+				setModalMessage({ isOpen: false, message: "" });
+				window.location.reload();
+			}, 3000);
 
 			setIsModalCorrection(false);
-			// window.location.reload();
 		} catch (err) {
 			console.error("Ошибка при создании заказа:", err);
 			alert("Ошибка при создании заказа.");
@@ -49,6 +64,22 @@ const ModalCorrection = ({
 	};
 
 	if (!isModalCorrection) return null; // Если модалка закрыта — ничего не рендерю
+
+	//+ Вычисляю итоговую стоимость:
+	console.log(products);
+
+	const totalPrice = products.reduce((sum, item) => {
+		const productPrice = item.product?.price || 0;
+		console.log(productPrice);
+
+		const additivesList = item.additives || [];
+
+		// Считаю цену за добавки: по 25 руб. за каждую
+		const additivesPrice = additivesList.trim().split(/\s+/).length * 25;
+		console.log(additivesPrice);
+
+		return sum + (+productPrice + additivesPrice);
+	}, 0);
 
 	const modalContent = (
 		<div
@@ -64,7 +95,9 @@ const ModalCorrection = ({
 				<div className="modal__text">
 					Финальный штрих — и кофе будет Вашим
 				</div>
-				<div className="modal__text">Сумма к оплате: </div>
+				<div className="modal__text">
+					Сумма к оплате: {totalPrice.toFixed(2)} ₽
+				</div>
 				<div className="modal__wrapper-input">
 					<label htmlFor="time" className="modal__label">
 						Во сколько заберёте кофе?
