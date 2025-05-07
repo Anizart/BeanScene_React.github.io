@@ -49,17 +49,10 @@ const Cart = ({
 	}, []);
 
 	//+ Обработчик удаления товара:
-	const handleRemoveFromBasket = async (productId) => {
+	const handleRemoveFromBasket = async (basketId) => {
 		try {
-			const response = await removeFromBasket(productId);
-			if (response.success) {
-				setCartProducts((prevProducts) =>
-					prevProducts.filter(
-						(product) => product.product.id !== productId,
-					),
-				);
-				return;
-			}
+			await removeFromBasket(basketId);
+			window.location.reload();
 		} catch (err) {
 			console.error("Ошибка при удалении товара:", err);
 		}
