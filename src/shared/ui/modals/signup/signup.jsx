@@ -50,7 +50,7 @@ const ModalSignUp = ({
 
 			setTimeout(() => {
 				setModalMessage({ isOpen: false, message: "" });
-				navigate("http://bean-scene.tw1.su/office");
+				navigate("/office");
 				window.location.reload();
 			}, 3000);
 

@@ -83,7 +83,7 @@ const ModalSearch = ({
 										key={product.id}
 										className="modal-search__card">
 										<img
-											src={`http://localhost:3000/${product.img}`}
+											src={`http://api.bean-scene.tw1.su/${product.img}`}
 											alt={product.name}
 											className="modal-search__wrapper-img"
 										/>
