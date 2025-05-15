@@ -1,4 +1,4 @@
-export const API_URL = "http://localhost:3000/api/";
+export const API_URL = "https://api.bean-scene.tw1.su/api/";
 
 export async function getProducts() {
 	try {
