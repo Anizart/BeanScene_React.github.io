@@ -69,7 +69,7 @@ const MenuCard = ({
 						<div className="menu__card">
 							<div className="menu__wrapper-img">
 								<img
-									src={`http://localhost:3000/${product.img}`}
+									src={`http://bean-scene.tw1.su/${product.img}`}
 									alt={product.name}
 									className="menu__img"
 								/>

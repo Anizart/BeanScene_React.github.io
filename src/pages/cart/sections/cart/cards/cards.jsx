@@ -5,7 +5,7 @@ const Cards = ({ products, onRemove }) => {
 	return products.map(({ name, description, additives, price, img, id }) => (
 		<div className="cards__card" key={id}>
 			<img
-				src={`http://localhost:3000/${img}`}
+				src={`http://bean-scene.tw1.su/${img}`}
 				alt={name}
 				className="cards__img"
 			/>
